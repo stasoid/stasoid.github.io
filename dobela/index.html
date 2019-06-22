@@ -536,16 +536,16 @@ iterate($$('button'), elt=>elt.addEventListener("mousedown", evt=>evt.preventDef
 </script>
 
 <script>
-// https://blah-blah/dobweb.htm?code_=...&input_=...
+// https://blah-blah/dobweb.htm?code=...&input=...
 
 let urlParams = new URLSearchParams(location.search);
-let code = urlParams.get('code_');
+let code = urlParams.get('code');
 if(code != null)
 {
 	editor.setValue(code)
 	editor.clearHistory() // clear undo history
 }
-let input = urlParams.get('input_');
+let input = urlParams.get('input');
 if(input != null)
 	$('#input').value = input
 
@@ -557,10 +557,10 @@ function cmdpermalink()
 	if(code != "" || input != "")
 	{
 		url += "?"
-		if(code != "") url += "code_=" + encodeURIComponent(code)
+		if(code != "") url += "code=" + encodeURIComponent(code)
 		if(input != "") {
 			if(code != "") url += "&"
-			url += "input_=" + encodeURIComponent(input);
+			url += "input=" + encodeURIComponent(input);
 		}
 	}
 	// if pushState is used then popstate event need to be handled for back/forward browser buttons to work properly

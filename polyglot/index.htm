@@ -1,1 +1,111 @@
-hi hi hi
+<!doctype html>
+<meta charset="utf-8">
+
+<script src="tio.js"></script>
+<script src="languages.js"></script>
+
+<script>
+
+var code;
+var n_langs = langs.length-1; // total number of langs
+var passed, failed=[], skipped;
+var finished; // number of langs that finished testing, passed + failed + skipped
+let status; // override window.status
+
+function run_lang(lang, onfinish)
+{
+	// indicates that this lang is worked on, no need to run it again (see onfinish)
+	lang.processed = true;
+
+	var arg = ""; //lang.arg ? readfile(lang.arg) : "";
+
+	if(lang.type == "tio")
+		tio_run(lang.n, "cat>f;" + lang.cmd, code, arg, onfinish);
+	else {
+		skipped++;
+		finished++;
+		update_status();
+	}
+}
+
+function trim_newlines(str)
+{
+	while(str.slice(-1) == '\n')
+	{
+		str = str.slice(0,-1);
+		if(str.slice(-1) == '\r')
+			str = str.slice(0,-1);
+	}
+	return str;
+}
+
+function onfinish(n, stdout, stderr, warnings)
+{
+	langs[n].result = [stdout, stderr, warnings];
+
+	var result = trim_newlines(stdout);
+	var expected_result = langs[n].stdout || n+"";
+
+	if(result == expected_result)
+		passed++;
+	else {
+		failed.push(n);
+		// TO DO: do smth with stdout/stderr/warnings
+	}
+	finished++;
+	update_status();
+
+	if(finished == n_langs) // all langs are finished, nothing to do
+		return;
+
+	// find and run next untested lang
+	var next = n+1;
+	while(next != n_langs+1 && langs[next].processed)
+		next++;
+	if(next != n_langs+1)
+		run_lang(langs[next], onfinish);
+}
+
+function run()
+{
+	code = editor.value;
+
+	langs.forEach(lang => lang.processed = false);
+	passed = skipped = finished = 0;
+	failed = [];
+	update_status();
+
+	run_lang(langs[1], onfinish);
+//	run_lang(langs[2], onfinish);
+}
+
+function update_status()
+{
+	status.innerHTML = 
+		finished+'/'+n_langs +
+		' passed:'+passed +
+		' skipped:'+skipped +
+		' failed:'+failed.length+' '+failed.reduce((result,n) => result += langs[n].name+' ', '');
+}
+
+onload = function()
+{
+	// make buttons unfocusable, so they don't steal focus from the editor
+	iterate($$('button'), elt=>elt.addEventListener("mousedown", evt=>evt.preventDefault()));
+	status = $('#status');
+	passed = skipped = finished = 0;
+	failed = [];
+	update_status();
+}
+
+</script>
+
+
+<body id=body>
+  <!-- wrap=off https://stackoverflow.com/a/43259431 -->
+  <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">la la la</textarea>
+  <div>
+    <button onclick="run()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
+    <span id=status style="font:16pt Arial"></span>
+  </div>
+</body>

@@ -20,8 +20,13 @@ function run_lang(lang, onfinish)
 	var arg = ""; //lang.arg ? readfile(lang.arg) : "";
 
 	if(lang.type == "tio")
-		tio_run(lang.n, "cat>f;" + lang.cmd, code, arg, onfinish);
-	else {
+	{
+		let t = lang.timeout || 5;
+		let cmd = "cat>f\n" + "cat<<'.'>x\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash x "$1"';
+		tio_run(lang.n, cmd, code, arg, onfinish);
+	}
+	else
+	{
 		skipped++;
 		finished++;
 		update_status();
@@ -102,7 +107,7 @@ onload = function()
 
 <body id=body>
   <!-- wrap=off https://stackoverflow.com/a/43259431 -->
-  <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">la la la</textarea>
+  <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">print(1)#i2</textarea>
   <div>
     <button onclick="run()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
     <span id=status style="font:16pt Arial"></span>

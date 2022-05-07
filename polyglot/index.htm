@@ -10,11 +10,11 @@ var code;
 var n_langs = langs.length-1; // total number of langs
 var passed, failed=[], skipped;
 var finished; // number of langs that finished testing, passed + failed + skipped
-let status; // override window.status
 
 function run_lang(lang, onfinish)
 {
-	// indicates that this lang is worked on, no need to run it again (see onfinish)
+	// indicates that this lang is either finished or being worked on, no need to run it again
+	// (checked when finding next lang to test in onfinish)
 	lang.processed = true;
 
 	var arg = ""; //lang.arg ? readfile(lang.arg) : "";
@@ -81,7 +81,7 @@ function run()
 
 function update_status()
 {
-	status.innerHTML = 
+	$('#status').innerHTML = 
 		finished+'/'+n_langs +
 		' passed:'+passed +
 		' skipped:'+skipped +
@@ -92,7 +92,6 @@ onload = function()
 {
 	// make buttons unfocusable, so they don't steal focus from the editor
 	iterate($$('button'), elt=>elt.addEventListener("mousedown", evt=>evt.preventDefault()));
-	status = $('#status');
 	passed = skipped = finished = 0;
 	failed = [];
 	update_status();

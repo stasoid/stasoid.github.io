@@ -23,7 +23,7 @@ function run_lang(lang, onfinish)
 
 	if(lang.type == "tio")
 	{
-		let t = lang.timeout || 3;
+		let t = lang.timeout || 5;
 		let cmd = "cat>f\n" + "cat<<'.'>x\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash x "$1"';
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
@@ -48,7 +48,7 @@ function trim_newlines(str)
 
 function onfinish(n, stdout, stderr, warnings)
 {
-	langs[n].result = [stdout, stderr, warnings];
+	langs[n].result = {stdout, stderr, warnings};
 
 	var result = trim_newlines(stdout);
 	var expected_result = langs[n].stdout || n+"";
@@ -87,8 +87,10 @@ function run()
 
 function get_debug_link(lang)
 {
+	let tooltip = 'stdout:\n' + lang.result.stdout + '\nstderr:\n' + lang.result.stderr;
+	if(lang.result.warnings) tooltip += "\nwarnings:\n" + lang.result.warnings;
 //	if(lang.type != "tio")
-		return "<a>" + lang.name + "</a>"; // still need <a> for proper styling
+		return `<a title='${tooltip}'>${lang.name}</a>`; // still need <a> for proper styling
 
 //	let debug_cmd = "cat>f\n" + (lang.debug_cmd || lang.cmd);
 //	let tio_link = ...

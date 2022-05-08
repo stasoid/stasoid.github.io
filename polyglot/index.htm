@@ -5,12 +5,13 @@
 
 <script src="tio.js"></script>
 <script src="languages.js"></script>
+<script src="util.js"></script>
 
 <script>
 
 var code;
 var n_langs = langs.length-1; // total number of langs
-var passed=0, failed=[], skipped=0;
+var passed=0, failed=[], skipped=[];
 var finished=0; // number of langs that finished testing, passed + failed + skipped
 
 function run_lang(lang, onfinish)
@@ -19,7 +20,7 @@ function run_lang(lang, onfinish)
 	// (checked in onfinish when finding next lang to test)
 	lang.processed = true;
 
-	var arg = ""; //lang.arg ? readfile(lang.arg) : "";
+	var arg = lang.arg ? readurl(lang.arg) : "";
 
 	if(lang.type == "tio")
 	{
@@ -29,9 +30,10 @@ function run_lang(lang, onfinish)
 	}
 	else
 	{
-		skipped++;
+		skipped.push(lang.n);
 		finished++;
 		update_status();
+		run_next(lang.n);
 	}
 }
 
@@ -60,10 +62,15 @@ function onfinish(n, stdout, stderr, warnings)
 	finished++;
 	update_status();
 
+	run_next(n);
+}
+
+// find and run next untested lang
+function run_next(n)
+{
 	if(finished == n_langs) // all langs are finished, nothing to do
 		return;
 
-	// find and run next untested lang
 	var next = n+1;
 	while(next != n_langs+1 && langs[next].processed)
 		next++;
@@ -73,11 +80,12 @@ function onfinish(n, stdout, stderr, warnings)
 
 function run()
 {
-	code = editor.value;
+	code = editor.value.replace(/\7/g, '\r'); // BEL -> CR
 
 	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
-	passed = skipped = finished = 0;
+	passed = finished = 0;
+	skipped = [];
 	failed = [];
 	update_status();
 
@@ -99,11 +107,13 @@ function get_debug_link(lang)
 
 function update_status()
 {
-	$('#status').innerHTML = 
-		finished+'/'+n_langs +
-		' passed:'+passed +
-		' skipped:'+skipped +
-		' failed:'+failed.length+' '+failed.reduce((result,n) => result += get_debug_link(langs[n])+' ', '');
+	let skipped_langs = skipped.reduce( (result,n) => result += langs[n].name + ' ', '' );
+	skipped_langs = `<span title='${skipped_langs}'>skipped:${skipped.length}</span>`;
+
+	let failed_langs = failed.reduce( (result,n) => result += get_debug_link(langs[n]) + ' ', '' );
+	failed_langs = 'failed:'+failed.length+' '+failed_langs;
+
+	$('#status').innerHTML = finished+'/'+n_langs + ' passed:'+passed + ' '+skipped_langs + ' '+failed_langs;
 }
 
 onload = function()
@@ -116,7 +126,7 @@ onload = function()
 </script>
 
 
-<body id=body>
+<body>
   <!-- wrap=off https://stackoverflow.com/a/43259431 -->
   <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">print(1)#i2</textarea>
   <div>

@@ -24,7 +24,7 @@ function byteStringToByteArray(byteString) {
 
 function byteArrayToByteString(byteArray) {
 	var retval = "";
-	iterate(byteArray, function(byte) { retval += String.fromCharCode(byte); });
+	byteArray.forEach( byte => retval += String.fromCharCode(byte) );
 	return retval;
 }
 

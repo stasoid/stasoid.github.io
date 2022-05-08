@@ -1,6 +1,8 @@
 <!doctype html>
 <meta charset="utf-8">
 
+<link rel="stylesheet" href="styles.css">
+
 <script src="tio.js"></script>
 <script src="languages.js"></script>
 
@@ -53,10 +55,8 @@ function onfinish(n, stdout, stderr, warnings)
 
 	if(result == expected_result)
 		passed++;
-	else {
+	else
 		failed.push(n);
-		// TO DO: do smth with stdout/stderr/warnings
-	}
 	finished++;
 	update_status();
 
@@ -84,13 +84,18 @@ function run()
 //	run_lang(langs[2], onfinish);
 }
 
+function get_debug_link(lang)
+{
+	return `<a>${lang.name}</a>`;
+}
+
 function update_status()
 {
 	$('#status').innerHTML = 
 		finished+'/'+n_langs +
 		' passed:'+passed +
 		' skipped:'+skipped +
-		' failed:'+failed.length+' '+failed.reduce((result,n) => result += langs[n].name+' ', '');
+		' failed:'+failed.length+' '+failed.reduce((result,n) => result += get_debug_link(langs[n])+' ', '');
 }
 
 onload = function()

@@ -75,6 +75,7 @@ function run()
 {
 	code = editor.value;
 
+	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
 	passed = skipped = finished = 0;
 	failed = [];
@@ -86,7 +87,12 @@ function run()
 
 function get_debug_link(lang)
 {
-	return `<a>${lang.name}</a>`;
+//	if(lang.type != "tio")
+		return "<a>" + lang.name + "</a>"; // still need <a> for proper styling
+
+//	let debug_cmd = "cat>f\n" + (lang.debug_cmd || lang.cmd);
+//	let tio_link = ...
+//	return `<a href='${tio_link}'>${lang.name}</a>`;
 }
 
 function update_status()

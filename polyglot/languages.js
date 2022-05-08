@@ -6,7 +6,7 @@
 
 var langs = [
 	,
-	{ n:1,	  name: "Python-3", 		type: "tio", 	cmd: "python3 f" },
+	{ n:1,	  name: "Python 3", 		type: "tio", 	cmd: "python3 f" },
 	{ n:2,	  name: "V(Vim)", 			type: "tio", 	cmd: "/opt/v/v f -v" },
 	{ n:3,	  name: "Minkolang",		type: "tio", 	cmd: "mv f f.mkl; python3 /opt/minkolang/minkolang_0.15.py f.mkl" },
 	{ n:4,	  name: "><>", 				type: "tio", 	cmd: "python3 /opt/fish/fish.py f" },

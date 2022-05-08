@@ -6,12 +6,6 @@
 function $(selector, parent) { return (parent || document).querySelector(selector); }
 function $$(selector, parent) { return (parent || document).querySelectorAll(selector); }
 
-function iterate(iterable, func) {
-	if (!iterable) return;
-	for (var i = 0; i < iterable.length; i++)
-		func(iterable[i]);
-}
-
 function sendMessage(title, text) {
 	alert(title + ": " + text);
 }

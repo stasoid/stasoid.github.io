@@ -379,4 +379,6 @@ var langs = [
 	{ n:338,  name: "Rexx",				type: "tio",	cmd: "rexx f" },
 	{ n:339,  name: "Ruby -x",			type: "tio",	cmd: "ruby -x f" },
 	{ n:340,  name: "Perl -x",			type: "tio",	cmd: "perl -x f" },
+
+	{ n:341,  name: "NT4 Batch",		type: "local",	cmd: "..\\NT4_BAT\\r tmp" },
 ]                                   	

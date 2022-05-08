@@ -53,7 +53,7 @@ function stateToByteString(code, input, arg) {
 function tio_run(n, code, input, arg, onfinish) {
 	var runRequest = new XMLHttpRequest;
 	requests.push(runRequest);
-	runRequest.open("POST", "https://tio.run/cgi-bin/run/api/", true);
+	runRequest.open("POST", "https://tio.run/cgi-bin/run/api/", true); // see https://github.com/AviFS/tio-api/
 	runRequest.responseType = "arraybuffer";
 	runRequest.onreadystatechange = function(){ runRequestOnReadyState(n, runRequest, onfinish) };
 	var data = deflate(stateToByteString(code, input, arg));

@@ -28,7 +28,7 @@ function run_lang(lang, onfinish)
 		let cmd = "cat>f\n" + "cat<<'.'>x\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash x "$1"';
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
-	else
+	else // skip
 	{
 		skipped.push(lang.n);
 		finished++;
@@ -120,6 +120,8 @@ onload = function()
 {
 	// make buttons unfocusable, so they don't steal focus from the editor
 	$$('button').forEach(btn=>btn.addEventListener("mousedown", evt=>evt.preventDefault()));
+	editor.value = readurl("346.txt");
+	editor.setSelectionRange(0,0);
 	update_status();
 }
 

@@ -365,7 +365,7 @@ var langs = [
 
 	{ n:326,  name: "Bot Engine",		type: "tio",	cmd: "mv f f.x; java -cp /opt/bot-engine/bin BotEngine f.x" },
 	{ n:327,  name: "Poetic",			type: "tio",	cmd: 'python3 -<<< $1 f',					arg: "langs/poetic.py" },
-	{ n:328,  name: "DipDup",			type: "tio",	cmd: 'echo "$1" > x.hs; runghc x.hs f',		arg: "langs/dipdup.hs" },
+	{ n:328,  name: "DipDup",			type: "tio",	cmd: 'echo "$1" > x; runghc x f',			arg: "langs/dipdup.hs" },
 	{ n:329,  name: "Befunge-109-cfunge",type:"local",	cmd: "..\\Befunge-109-cfunge\\r tmp" },
 	{ n:330,  name: "Batch",			type: "local",	cmd: "..\\BAT\\r tmp" },
 	{ n:331,  name: "PowerShell",		type: "tio",	cmd: "pwsh f" },

@@ -17,7 +17,7 @@ var finished=0; // number of langs that finished testing, passed + failed + skip
 function run_lang(lang, onfinish)
 {
 	// indicates that this lang is either finished or being worked on, no need to run it again
-	// (checked in onfinish when finding next lang to test)
+	// (checked in run_next when finding next lang to test)
 	lang.processed = true;
 
 	var arg = lang.arg ? readurl(lang.arg) : "";
@@ -25,7 +25,7 @@ function run_lang(lang, onfinish)
 	if(lang.type == "tio")
 	{
 		let t = lang.timeout || 5;
-		let cmd = "cat>f\n" + "cat<<'.'>x\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash x "$1"';
+		let cmd = "cat>f\n" + "cat<<'.'>s\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash s "$1"';
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
 	else // skip
@@ -90,7 +90,8 @@ function run()
 	update_status();
 
 	run_lang(langs[1], onfinish);
-//	run_lang(langs[2], onfinish);
+	run_lang(langs[2], onfinish);
+	run_lang(langs[3], onfinish);
 }
 
 function get_debug_link(lang)
@@ -130,9 +131,7 @@ onload = function()
 
 <body>
   <!-- wrap=off https://stackoverflow.com/a/43259431 -->
-  <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">print(1)#i2</textarea>
-  <div>
-    <button onclick="run()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
-    <span id=status style="font:16pt Arial"></span>
-  </div>
+  <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">print(1)#i2</textarea> <br>
+  <button onclick="run()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
+  <span id=status style="font:16pt Arial"></span>
 </body>

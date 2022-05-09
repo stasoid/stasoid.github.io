@@ -170,7 +170,8 @@ var langs = [
 	{ n:146,  name: "Curry",			type: "tio",	cmd: "mv f f.lcurry; /opt/curry-pakcs/bin/pakcs :load f.lcurry :save :quit >&2; ./f" },
 	{ n:147,  name: "Thue",				type: "tio",	cmd: "/opt/thue/bin/thue f 2>x" },
 	{ n:148,  name: "VTFF",				type: "tio",	cmd: 'node -<<< $1 f',						arg: "langs/vtff.js" },
-	{ n:149,  name: "CSL",				type: "tio",	cmd: "mono /opt/csl/Program.exe f",			stdout: "149 " }, // always prints a space on TIO because Console.ReadKey().Key != ConsoleKey.Enter
+	// prints a space on TIO because Console.ReadKey().Key != ConsoleKey.Enter
+	{ n:149,  name: "CSL",				type: "tio",	cmd: "mono /opt/csl/Program.exe f",			stdout: "149 " }, 
 	{ n:150,  name: "K-on Fuck",		type: "tio",	cmd: 'perl -<<< $1 f',						arg: "langs/k-on.pl" },
 	{ n:151,  name: "Black",			type: "tio",	cmd: "/opt/blak/blak -e0 -t1 f" },
 	{ n:152,  name: "ChuckScript",		type: "tio",	cmd: "ruby <<< $1 | node",					arg: "langs/chuckscript.rb" },

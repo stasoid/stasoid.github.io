@@ -13,6 +13,7 @@ var code;
 var n_langs = langs.length-1; // total number of langs
 var passed=0, failed=[], skipped=[];
 var finished=0; // number of langs that finished testing, passed + failed + skipped
+var internal_error = false;
 
 function run_lang(lang, onfinish)
 {
@@ -37,22 +38,11 @@ function run_lang(lang, onfinish)
 	}
 }
 
-function trim_newlines(str)
-{
-	while(str.slice(-1) == '\n')
-	{
-		str = str.slice(0,-1);
-		if(str.slice(-1) == '\r')
-			str = str.slice(0,-1);
-	}
-	return str;
-}
-
 function onfinish(n, stdout, stderr, warnings)
 {
 	langs[n].result = {stdout, stderr, warnings};
 
-	var result = trim_newlines(stdout);
+	var result = trim_right(stdout, "\r\n");
 	var expected_result = langs[n].stdout || n+"";
 
 	if(result == expected_result)
@@ -87,6 +77,7 @@ function run()
 	passed = finished = 0;
 	skipped = [];
 	failed = [];
+	internal_error = false;
 	update_status();
 
 	run_lang(langs[1], onfinish);
@@ -114,7 +105,9 @@ function update_status()
 	let failed_langs = failed.reduce( (result,n) => result += get_debug_link(langs[n]) + ' ', '' );
 	failed_langs = 'failed:'+failed.length+' '+failed_langs;
 
-	$('#status').innerHTML = finished+'/'+n_langs + ' passed:'+passed + ' '+skipped_langs + ' '+failed_langs;
+	let error = internal_error ? "<br><span style=color:red>Internal error occurred. See JS Console.</span>" : "";
+
+	$('#status').innerHTML = finished+'/'+n_langs + ' passed:'+passed + ' '+skipped_langs + ' '+failed_langs + error;
 }
 
 onload = function()

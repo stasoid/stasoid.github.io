@@ -9,7 +9,7 @@ function $(selector, parent) { return (parent || document).querySelector(selecto
 function $$(selector, parent) { return (parent || document).querySelectorAll(selector); }
 
 function sendMessage(title, text) {
-	alert(title + ": " + text);
+	error(title + ": " + text);
 }
 
 function deflate(byteString) {

@@ -26,7 +26,8 @@ function run_lang(lang, onfinish)
 	if(lang.type == "tio")
 	{
 		let t = lang.timeout || 5;
-		let cmd = "cat>f\n" + "cat<<'.'>s\n" + lang.cmd + "\n.\n" + "timeout -k1 " + t + ' bash s "$1"';
+		// without timeout it would be just "cat>f;"+lang.cmd
+		let cmd = `cat>f;cat<<'end'>s\n${lang.cmd}\nend\ntimeout -k1 ${t} bash s "$1"`;
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
 	else // skip

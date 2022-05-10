@@ -15,7 +15,7 @@ function error(msg)
 function trim_right(str, chars)
 {
 	if(!chars) chars = " \r\n\t";
-	while(chars.indexOf(str.slice(-1)) != -1)
+	while(chars.indexOf(str.at(-1)) != -1)
 		str = str.slice(0,-1);
 	return str;
 }

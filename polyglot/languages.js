@@ -228,7 +228,7 @@ var langs = [
 	{ n:200,  name: "Coconut",			type: "tio",	cmd: "coconut-run f" },
 	{ n:201,  name: "Julia 0.6",		type: "tio",	cmd: "/opt/julia6/bin/julia f" },
 	{ n:202,  name: "x86",				type: "local",	cmd: "..\\x86_boot_image\\autotest-latest tmp",	gui: true },
-	{ n:203,  name: "V-FMota",			type: "tio",	cmd: "sed \"s/'!'/--/\" /opt/v-fmota/V.hs > V.hs; runghc V.hs f" },
+	{ n:203,  name: "V-FMota",			type: "tio",	cmd: `sed "s/'!'/--/" /opt/v-fmota/V.hs > V.hs; runghc V.hs f` },
 	{ n:204,  name: "Seriously",		type: "tio",	cmd: "python2 /opt/seriously/seriously.py -f f" },
 	{ n:205,  name: "-XBinaryLiterals",	type: "tio",	cmd: "mv f f.lhs; runghc -cpp -XBinaryLiterals f.lhs" },
 	{ n:206,  name: "-XExtendedDefaultRules",type:"tio",cmd: "mv f f.lhs; runghc -cpp -XExtendedDefaultRules f.lhs" },

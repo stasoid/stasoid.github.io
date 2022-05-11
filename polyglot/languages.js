@@ -243,7 +243,7 @@ var langs = [
 	{ n:214,  name: "-XStrictData",		type: "tio",	cmd: "mv f f.lhs; runghc -cpp -XStrictData f.lhs" },
 	{ n:215,  name: "emotifuck",		type: "tio",	cmd: "/opt/emotifuck/emotifuck f" },
 	{ n:216,  name: "Silberjoder",		type: "tio",	cmd: "python2 /opt/silberjoder/silberjoder.py f" },
-	{ n:217,  name: "-XHexFloatLiterals",type:"local",	cmd: "..\\Haskell_with_HexFloatLiterals\\r tmp" },
+	{ n:217,  name: "-XHexFloatLiterals",type:"ato",	id: "haskell",	opt:["-x", "lhs", "-cpp", "-XHexFloatLiterals"] },
 
 	{ n:218,  name: "C-tcc",			type: "tio",	cmd: "/opt/c-tcc/bin/tcc -run f" },
 	{ n:219,  name: "Spoon",			type: "tio",	cmd: "/opt/spoon/spoon -q -0n -1M f" },
@@ -339,7 +339,7 @@ var langs = [
 
 	{ n:301,  name: "HTMLayout",		type: "local",	cmd: "..\\HTML_CSS_HTMLayout\\r tmp",		gui: true },
 	{ n:302,  name: "Sciter.TIS",		type: "local",	cmd: "..\\HTML_TIScript_Sciter\\r tmp",		gui: true },
-	{ n:303,  name:"-XLexicalNegation",	type: "local",	cmd: "..\\Haskell_with_LexicalNegation\\r tmp" },
+	{ n:303,  name:"-XLexicalNegation",	type: "ato",	id: "haskell",	opt:["-x", "lhs", "-cpp", "-XLexicalNegation"] },
 	{ n:304,  name: "IE6-CSS",			type: "local",	cmd: "..\\HTML_CSS_IE6\\r tmp",				gui: true },
 	{ n:305,  name: "IE7-CSS",			type: "local",	cmd: "..\\HTML_CSS_IE7\\r tmp",				gui: true },
 	{ n:306,  name: "IE7-JS",			type: "local",	cmd: "..\\HTML_JS_IE7\\r tmp",				gui: true },

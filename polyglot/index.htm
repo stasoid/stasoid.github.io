@@ -3,8 +3,9 @@
 
 <link rel="stylesheet" href="styles.css">
 
-<script src="tio.js"></script>
 <script src="languages.js"></script>
+<script src="tio.js"></script>
+<script src="ato.js"></script>
 <script src="util.js"></script>
 
 <script>
@@ -22,14 +23,18 @@ function run_lang(lang, onfinish)
 	// (checked in run_next when finding next lang to test)
 	lang.processed = true;
 
-	var arg = lang.arg ? readurl(lang.arg) : "";
+	let t = lang.timeout || 5;
 
 	if(lang.type == "tio")
 	{
-		let t = lang.timeout || 5;
 		// without timeout it would be just "cat>f;"+lang.cmd
 		let cmd = `cat>f;cat<<'end'>s\n${lang.cmd}\nend\ntimeout -k1 ${t} bash s "$1"`;
+		let arg = lang.arg ? readurl(lang.arg) : "";
 		tio_run(lang.n, cmd, code, arg, onfinish);
+	}
+	else if(lang.type == "ato")
+	{
+		ato_run(lang.n, code, lang.id, lang.opt, t, onfinish);
 	}
 	else // skip
 	{
@@ -78,16 +83,16 @@ function run()
 
 	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
-	queue = [...Array(n_langs+1).keys()].slice(1); // [1,2,..,n_langs]
+	queue = langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
 	passed = finished = 0;
 	skipped = [];
 	failed = [];
 	internal_error = false;
 	update_status();
 
-	run_lang(langs[1], onfinish);
-	run_lang(langs[2], onfinish);
-	run_lang(langs[3], onfinish);
+	run_next();
+	run_next();
+	run_next();
 }
 
 function get_debug_link(lang)

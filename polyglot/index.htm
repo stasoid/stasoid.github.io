@@ -14,6 +14,7 @@ var n_langs = langs.length-1; // total number of langs
 var passed=0, failed=[], skipped=[];
 var finished=0; // number of langs that finished testing, passed + failed + skipped
 var internal_error = false;
+var queue; // queue of langs to test
 
 function run_lang(lang, onfinish)
 {
@@ -35,7 +36,7 @@ function run_lang(lang, onfinish)
 		skipped.push(lang.n);
 		finished++;
 		update_status();
-		run_next(lang.n);
+		run_next();
 	}
 }
 
@@ -53,20 +54,22 @@ function onfinish(n, stdout, stderr, warnings)
 	finished++;
 	update_status();
 
-	run_next(n);
+	run_next();
 }
 
 // find and run next untested lang
-function run_next(n)
+function run_next()
 {
-	if(finished == n_langs) // all langs are finished, nothing to do
-		return;
+	while(1)
+	{
+		if(queue.length == 0) break;
+	
+		let n = queue.shift();
+		if(langs[n].processed) continue;
 
-	var next = n+1;
-	while(next != n_langs+1 && langs[next].processed)
-		next++;
-	if(next != n_langs+1)
-		run_lang(langs[next], onfinish);
+		run_lang(langs[n], onfinish);
+		break;
+	}
 }
 
 function run()
@@ -75,6 +78,7 @@ function run()
 
 	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
+	queue = [...Array(n_langs+1).keys()].slice(1); // [1,2,..,n_langs]
 	passed = finished = 0;
 	skipped = [];
 	failed = [];

@@ -83,7 +83,7 @@ function run()
 
 	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
-	queue = langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
+	queue = [45]; //langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
 	passed = finished = 0;
 	skipped = [];
 	failed = [];

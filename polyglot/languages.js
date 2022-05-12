@@ -53,7 +53,7 @@ var langs = [
 	// Case-insensitive variant of TIO's alphuck is now the primary interpreter for alphuck.
 	{ n:44,	  name: "alphuck",			type: "tio",	cmd: "tr A-Z a-z < f > x; /opt/brainfuck/alphuck x" },
 
-	{ n:45,	  name: "PicoLisp-17.12",	type: "local",	cmd: "..\\PicoLisp-17.12\\r2 tmp" },
+	{ n:45,	  name: "PicoLisp-17.12",	type: "tio",	cmd: "base64 -d <<< $1 > x; chmod +x x; ./x f",		arg: "langs/picolisp-17.12.b64" },
 	{ n:46,	  name: "Cubix",			type: "tio",	cmd: ">.input.tio; sed 's/#!.*//; s/.code.tio/f/g' /srv/wrappers/cubix | node" },
 	{ n:47,	  name: "Lily",				type: "tio",	cmd: "mv f f.lily; /opt/lily/lily f.lily" },
 	{ n:48,	  name: "Deadfish~",		type: "tio",	cmd: "python2 /opt/deadfish-/deadfish.py f" },

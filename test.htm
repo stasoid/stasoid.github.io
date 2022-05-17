@@ -12,6 +12,9 @@ xhr.setRequestHeader("Expires", "0");
 */
 xhr.setRequestHeader("Range", "bytes=0-256");
 
+xhr.setRequestHeader("Origin", "https://stasoid.github.io/");
+
+
 xhr.onreadystatechange = () => {
 	if (xhr.readyState != XMLHttpRequest.DONE) return;
 }

@@ -1,7 +1,8 @@
 <script>
 let xhr = new XMLHttpRequest;
 //xhr.open('GET', "https://github.com/stasoid/test/releases/download/aaa/test");
-xhr.open('GET', "https://api.github.com/repos/stasoid/test/releases/assets/test");
+//https://docs.github.com/en/rest/releases/assets
+xhr.open('GET', "https://api.github.com/repos/stasoid/test/releases/assets/65806411");
 
 xhr.responseType = "arraybuffer";
 

@@ -1,6 +1,8 @@
 <script>
 let xhr = new XMLHttpRequest;
-xhr.open('GET', "https://github.com/stasoid/test/releases/download/aaa/test");
+//xhr.open('GET', "https://github.com/stasoid/test/releases/download/aaa/test");
+xhr.open('GET', "https://api.github.com/repos/stasoid/test/releases/assets/test");
+
 xhr.responseType = "arraybuffer";
 
 // Workaround for cache bug_ in Chrome that breaks tinycore boot.
@@ -13,6 +15,7 @@ xhr.setRequestHeader("Expires", "0");
 xhr.setRequestHeader("Range", "bytes=0-256");
 
 xhr.setRequestHeader("Origin", "https://stasoid.github.io");
+xhr.setRequestHeader("Accept", "application/octet-stream");
 
 
 xhr.onreadystatechange = () => {

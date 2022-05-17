@@ -1,0 +1,16 @@
+<script>
+let xhr = new XMLHttpRequest;
+xhr.open('GET', "https://raw.githubusercontent.com/stasoid/test/master/helloworld-mod.png");
+xhr.responseType = "arraybuffer";
+
+xhr.setRequestHeader("Range", "bytes=0-256");
+
+xhr.setRequestHeader("Origin", "https://stasoid.github.io");
+xhr.setRequestHeader("Accept", "application/octet-stream");
+
+
+xhr.onreadystatechange = () => {
+	if (xhr.readyState != XMLHttpRequest.DONE) return;
+}
+xhr.send();
+</script>

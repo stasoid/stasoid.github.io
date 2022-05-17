@@ -83,7 +83,7 @@ function run()
 
 	abort_all_requests();
 	langs.forEach(lang => lang.processed = false);
-	queue = [45]; //langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
+	queue = [217]; //langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
 	passed = finished = 0;
 	skipped = [];
 	failed = [];
@@ -123,7 +123,7 @@ function update_status()
 onload = function()
 {
 	// make buttons unfocusable, so they don't steal focus from the editor
-	$$('button').forEach(btn=>btn.addEventListener("mousedown", evt=>evt.preventDefault()));
+	$$('button').forEach(btn => btn.addEventListener("mousedown", evt=>evt.preventDefault()));
 	editor.value = readurl("346.txt");
 	editor.setSelectionRange(0,0);
 	update_status();

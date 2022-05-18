@@ -1,0 +1,39 @@
+<!-- DOESN'T WORK with github releases -->
+<script>
+let xhr = new XMLHttpRequest;
+/*
+https://github.community/t/can-releases-be-used-to-host-large-files-for-pages/135571/7
+chrome --disable-web-security    # disable CORS checks
+g<cannot download github release asset because of CORS error>
+https://github.community/t/github-api-bug-download-repository-zip-cors/168693
+https://github.community/t/cannot-fetch-release-asset-binary-via-javascript/163118
+https://github.com/octokit/rest.js/issues/12  "Cannot download private release asset"
+https://stackoverflow.com/questions/63563948/fetch-github-source-tarball-without-cors-issues  "It isn't possible"
+g<get github authentication token>
+*/
+
+//xhr.open('GET', "https://github.com/stasoid/test/releases/download/aaa/test");
+//https://docs.github.com/en/rest/releases/assets
+//get asset id: https://github.community/t/getting-an-empty-list-of-release-assets-for-my-repo/208103
+xhr.open('GET', "https://api.github.com/repos/stasoid/test/releases/assets/65806411"); // fails with CORS error
+
+xhr.responseType = "arraybuffer";
+
+// Workaround for cache bug_ in Chrome that breaks tinycore boot.
+// https://stackoverflow.com/a/2068407
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+/*xhr.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+xhr.setRequestHeader("Pragma", "no-cache");
+xhr.setRequestHeader("Expires", "0");
+*/
+xhr.setRequestHeader("Range", "bytes=0-256");
+
+xhr.setRequestHeader("Origin", "https://stasoid.github.io");
+xhr.setRequestHeader("Accept", "application/octet-stream");
+
+
+xhr.onreadystatechange = () => {
+	if (xhr.readyState != XMLHttpRequest.DONE) return;
+}
+xhr.send();
+</script>

@@ -1,4 +1,5 @@
 <!-- DOESN'T WORK with github releases -->
+<!-- github releases: any number of files, each file < 2GB -->
 <script>
 let xhr = new XMLHttpRequest;
 /*
@@ -14,12 +15,12 @@ g<get github authentication token>
 
 //xhr.open('GET', "https://github.com/stasoid/test/releases/download/aaa/test");
 //https://docs.github.com/en/rest/releases/assets
-//get asset id: https://github.community/t/getting-an-empty-list-of-release-assets-for-my-repo/208103
+//get asset id: https://github.community/t/getting-an-empty-list-of-release-assets-for-my-repo/208103   curl -H "Accept: application/vnd.github.v3+json"  https://api.github.com/repos/stasoid/test/releases
 xhr.open('GET', "https://api.github.com/repos/stasoid/test/releases/assets/65806411"); // fails with CORS error
 
 xhr.responseType = "arraybuffer";
 
-// Workaround for cache bug_ in Chrome that breaks tinycore boot.
+// Workaround for cache bug_ in Chrome that breaks tinycore boot in copy/v86.
 // https://stackoverflow.com/a/2068407
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
 /*xhr.setRequestHeader("Cache-Control", "no-cache, no-store, must-revalidate");

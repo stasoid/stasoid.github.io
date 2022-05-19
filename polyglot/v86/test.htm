@@ -3,19 +3,39 @@
 <script src="libv86.js"></script>
 
 <script>
-let v86_bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
+let bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
 onload = function()
 {
-	new V86Starter({
-		wasm_path: v86_bin + "v86.wasm",
-		bios:      { url: v86_bin + "seabios.bin" },
-		vga_bios:  { url: v86_bin + "vgabios.bin" },
-        bzimage:   { url: v86_bin + "buildroot-bzimage.bin" },
-		filesystem: { basefs: v86_bin + "mnt/fs.json", baseurl: v86_bin + "mnt/" },
+	emulator = new V86Starter({
+		wasm_path: bin + "v86.wasm",
+		bios:      { url: bin + "seabios.bin" },
+		vga_bios:  { url: bin + "vgabios.bin" },
+		bzimage:   { url: bin + "buildroot-bzimage.bin" },
+		filesystem: { basefs: bin + "mnt/fs.json", baseurl: bin + "mnt/" },
 		screen_container: screen_container,
 		autostart: true
 	});
+
+	let data = "";
+	emulator.add_listener("serial0-output-char", ch => {
+		data += ch;
+		if(data.endsWith("~% ")) on_linux_booted();
+		else if(data.endsWith("mnt% ")) on_command_finished();  // all commands are executed in /mnt
+	});
 }
+
+function on_linux_booted()
+{
+	console.log("on_linux_booted");
+//	let data = new TextEncoder().encode("(prinl 45)(bye)\n");
+//	emulator.create_file("f", data);
+}
+
+function on_command_finished()
+{
+	console.log("on_command_finished");
+}
+
 </script>
 
 <!-- A minimal structure for the ScreenAdapter defined in browser/screen.js -->

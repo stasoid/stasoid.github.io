@@ -11,6 +11,7 @@ onload = function()
 		bios:      { url: v86_bin + "seabios.bin" },
 		vga_bios:  { url: v86_bin + "vgabios.bin" },
         bzimage:   { url: v86_bin + "buildroot-bzimage.bin" },
+		filesystem: { basefs: v86_bin + "mnt/fs.json", baseurl: v86_bin + "mnt/" },
 		screen_container: screen_container,
 		autostart: true
 	});

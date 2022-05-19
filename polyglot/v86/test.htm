@@ -1,6 +1,7 @@
 <!doctype html>
 
 <script src="libv86.js"></script>
+<script src="../util.js"></script>
 
 <script>
 let bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
@@ -27,13 +28,18 @@ onload = function()
 function on_linux_booted()
 {
 	console.log("on_linux_booted");
-//	let data = new TextEncoder().encode("(prinl 45)(bye)\n");
-//	emulator.create_file("f", data);
+	let data = new TextEncoder().encode(readfile("../346.txt"));
+	emulator.create_file("f", data);
+	emulator.serial0_send("cd /mnt\nsh install\n");
 }
 
 function on_command_finished()
 {
 	console.log("on_command_finished");
+}
+
+function v86_run(cmd, onfinish)
+{
 }
 
 </script>

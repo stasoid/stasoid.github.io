@@ -1,4 +1,4 @@
-function readurl(url)
+function readfile(url)
 {
 	let xhr = new XMLHttpRequest;
 	xhr.open('GET', url, false);

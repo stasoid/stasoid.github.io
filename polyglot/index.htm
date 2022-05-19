@@ -29,7 +29,7 @@ function run_lang(lang, onfinish)
 	{
 		// without timeout it would be just "cat>f;"+lang.cmd
 		let cmd = `cat>f;cat<<'end'>s\n${lang.cmd}\nend\ntimeout -k1 ${t} bash s "$1"`;
-		let arg = lang.arg ? readurl(lang.arg) : "";
+		let arg = lang.arg ? readfile(lang.arg) : "";
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
 	else if(lang.type == "ato")
@@ -124,7 +124,7 @@ onload = function()
 {
 	// make buttons unfocusable, so they don't steal focus from the editor
 	$$('button').forEach(btn => btn.addEventListener("mousedown", evt=>evt.preventDefault()));
-	editor.value = readurl("346.txt");
+	editor.value = readfile("346.txt");
 	editor.setSelectionRange(0,0);
 	update_status();
 }

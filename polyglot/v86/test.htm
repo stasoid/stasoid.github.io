@@ -1,0 +1,24 @@
+<!doctype html>
+
+<script src="libv86.js"></script>
+
+<script>
+let v86_bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
+onload = function()
+{
+	new V86Starter({
+		wasm_path: v86_bin + "v86.wasm",
+		bios:      { url: v86_bin + "seabios.bin" },
+		vga_bios:  { url: v86_bin + "vgabios.bin" },
+        bzimage:   { url: v86_bin + "buildroot-bzimage.bin" },
+		screen_container: screen_container,
+		autostart: true
+	});
+}
+</script>
+
+<!-- A minimal structure for the ScreenAdapter defined in browser/screen.js -->
+<div id=screen_container>
+	<div style="white-space: pre; font: 14px monospace"></div>
+	<canvas></canvas>
+</div>

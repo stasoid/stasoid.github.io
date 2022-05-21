@@ -83,6 +83,8 @@ function run()
 	run_next();
 	run_next();
 	run_next();
+	// v86 langs must be executed sequentially, so they are run in a separate "thread"
+	// this is also good for performance - we start executing them right away
 	v86_run_all(code);
 }
 

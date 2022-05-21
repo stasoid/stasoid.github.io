@@ -1,3 +1,6 @@
+$ = s => document.querySelector(s);
+$$ = s => document.querySelectorAll(s);
+
 function readfile(url)
 {
 	let xhr = new XMLHttpRequest;

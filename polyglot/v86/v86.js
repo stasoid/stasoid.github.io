@@ -68,6 +68,7 @@ function v86_run(cmd, timeout)
 async function v86_run_all(code)
 {
 	let data = new TextEncoder().encode(code);
+	// _todo: check if this operation succeeded
 	await v86_write_file("f", data);
 
 	// if install is finished just run the first command
@@ -87,15 +88,14 @@ function v86_run_next()
 	if(n)
 	{
 		cur_lang = n;
-		let lang = langs[n];
-		let t = lang.timeout || 5;
-		v86_run(lang.cmd, t);
+		v86_run(langs[n].cmd, langs[n].timeout || 5);
 	}
 	else
 		cur_lang = 0;
 }
 
-// based on create_file in starter.js; this version returns a promise
+// based on create_file in starter.js
+// this version returns a promise so it is usable from v86_write_file
 function v86_create_file(file, data)
 {
 	let name = file.split("/").at(-1);
@@ -106,7 +106,7 @@ function v86_create_file(file, data)
 		return emulator.fs9p.CreateBinaryFile(name, parent_id, data);
 	else
 		return Promise.reject(new FileNotFoundError());
-};
+}
 
 
 // based on read_file in filesystem.js
@@ -118,4 +118,4 @@ function v86_write_file(file, data)
 		return v86_create_file(file, data);
 
 	return emulator.fs9p.Write(p.id, 0, data.length, data);
-};
+}

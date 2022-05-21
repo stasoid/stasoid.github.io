@@ -5,9 +5,6 @@
 
 var requests = [];
 
-function $(selector, parent) { return (parent || document).querySelector(selector); }
-function $$(selector, parent) { return (parent || document).querySelectorAll(selector); }
-
 function sendMessage(title, text) {
 	error(title + ": " + text);
 }

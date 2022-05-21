@@ -52,8 +52,11 @@ function on_command_finished()
 		emulator.fs9p.read_file("stdout"),
 		emulator.fs9p.read_file("stderr"),
 	]).then(([stdout, stderr]) => {
-		let d = a => new TextDecoder().decode(a);
-		v86_onfinish(d(stdout), d(stderr));
+		let decode = a => new TextDecoder().decode(a);
+		// read_file returns null if file is empty, decode fails on null
+		stdout = stdout ? decode(stdout) : "";
+		stderr = stderr ? decode(stderr) : "";
+		v86_onfinish(stdout, stderr);
 	});
 }
 

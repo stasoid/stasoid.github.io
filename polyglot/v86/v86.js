@@ -80,26 +80,19 @@ async function v86_run_all(code)
 
 let cur_lang = 0; // language currently being processed
 
-// find and run next untested lang
+// run next untested lang
 function v86_run_next()
 {
-	while(1)
+	let n = v86_queue.shift();
+	if(n)
 	{
-		if(v86_queue.length == 0) {
-			cur_lang = 0;
-			break;
-		}
-	
-		let n = v86_queue.shift();
-		if(langs[n].processed) continue;
-
 		cur_lang = n;
 		let lang = langs[n];
-		lang.processed = true;
 		let t = lang.timeout || 5;
 		v86_run(lang.cmd, t);
-		break;
 	}
+	else
+		cur_lang = 0;
 }
 
 // based on create_file in starter.js; this version returns a promise

@@ -21,10 +21,6 @@ var queue, v86_queue; // queue of langs to test
 
 function run_lang(lang, onfinish)
 {
-	// indicates that this lang is either finished or being worked on, no need to run it again
-	// (checked in run_next when finding next lang to test)
-	lang.processed = true;
-
 	let t = lang.timeout || 5;
 
 	if(lang.type == "tio")
@@ -65,19 +61,11 @@ function onfinish(n, stdout, stderr, warnings, fn_next)
 	fn_next();
 }
 
-// find and run next untested lang
+// run next untested lang
 function run_next()
 {
-	while(1)
-	{
-		if(queue.length == 0) break;
-	
-		let n = queue.shift();
-		if(langs[n].processed) continue;
-
-		run_lang(langs[n], onfinish);
-		break;
-	}
+	let n = queue.shift();
+	if(n) run_lang(langs[n], onfinish);
 }
 
 function run()
@@ -85,8 +73,9 @@ function run()
 	code = editor.value.replace(/\7/g, '\r'); // BEL -> CR
 
 	abort_all_requests();
-	langs.forEach(lang => lang.processed = false);
 	let all = langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
+	// all = first + all;
+	// all = all.uniq();
 	queue = []; //all.filter(l=>l.type!="v86");
 	v86_queue = [45]; //all.filter(l=>l.type=="v86");
 	passed = finished = 0;

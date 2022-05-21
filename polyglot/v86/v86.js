@@ -56,17 +56,8 @@ function on_command_finished()
 		// read_file returns null if file is empty, decode fails on null
 		stdout = stdout ? decode(stdout) : "";
 		stderr = stderr ? decode(stderr) : "";
-		v86_onfinish(stdout, stderr);
+		onfinish(cur_lang, stdout, stderr, "", v86_run_next);
 	});
-}
-
-let cur_lang; // language currently being processed
-
-function v86_onfinish(stdout, stderr)
-{
-	//stderr = stderr ? " stderr=" + stderr : "";
-	//console.log("on_command_finished: stdout=" + stdout + stderr);
-	onfinish(cur_lang, stdout, stderr, "", v86_run_next);
 }
 
 function v86_run(cmd, timeout)
@@ -87,12 +78,17 @@ async function v86_run_all(code)
 		autostart_commands = true;
 }
 
+let cur_lang = 0; // language currently being processed
+
 // find and run next untested lang
 function v86_run_next()
 {
 	while(1)
 	{
-		if(v86_queue.length == 0) break;
+		if(v86_queue.length == 0) {
+			cur_lang = 0;
+			break;
+		}
 	
 		let n = v86_queue.shift();
 		if(langs[n].processed) continue;

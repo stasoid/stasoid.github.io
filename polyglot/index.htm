@@ -13,9 +13,7 @@
 <script>
 
 var code;
-var n_langs = langs.length-1; // total number of langs
 var passed=0, failed=[], skipped=[];
-var finished=0; // number of langs that finished testing, passed + failed + skipped
 var internal_error = false;
 var queue, v86_queue; // queue of langs to test
 
@@ -37,7 +35,6 @@ function run_lang(lang, onfinish)
 	else // skip
 	{
 		skipped.push(lang.n);
-		finished++;
 		update_status();
 		run_next();
 	}
@@ -54,7 +51,6 @@ function onfinish(n, stdout, stderr, warnings, fn_next)
 		passed++;
 	else
 		failed.push(n);
-	finished++;
 	update_status();
 
 	if(!fn_next) fn_next = run_next;
@@ -73,12 +69,12 @@ function run()
 	code = editor.value.replace(/\7/g, '\r'); // BEL -> CR
 
 	abort_all_requests();
-	let all = langs.slice(1).map(l=>l.n); // [1,2,..,n_langs]
+	let all = langs.slice(1).map(l=>l.n); // [1,2,..,N]
 	// all = first + all;
 	// all = all.uniq();
 	queue = []; //all.filter(l=>l.type!="v86");
 	v86_queue = [45]; //all.filter(l=>l.type=="v86");
-	passed = finished = 0;
+	passed = 0;
 	skipped = [];
 	failed = [];
 	internal_error = false;
@@ -104,6 +100,9 @@ function get_debug_link(lang)
 
 function update_status()
 {
+	let total = langs.length-1; // total number of langs
+	let finished = passed + failed.length + skipped.length; // number of langs that finished testing, passed + failed + skipped
+
 	let skipped_langs = skipped.reduce( (result,n) => result += langs[n].name + ' ', '' );
 	skipped_langs = `<span title='${skipped_langs}'>skipped:${skipped.length}</span>`;
 
@@ -112,7 +111,7 @@ function update_status()
 
 	let error = internal_error ? "<br><span style=color:red>Internal error occurred. See JS Console.</span>" : "";
 
-	$('#status').innerHTML = finished+'/'+n_langs + ' passed:'+passed + ' '+skipped_langs + ' '+failed_langs + error;
+	$('#status').innerHTML = finished+'/'+total + ' passed:'+passed + ' '+skipped_langs + ' '+failed_langs + error;
 }
 
 onload = function()

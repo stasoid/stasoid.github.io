@@ -74,7 +74,7 @@ function v86_run(cmd, timeout)
 async function v86_run_all(code)
 {
 	let data = new TextEncoder().encode(code);
-	await emulator.fs9p.write_file("f", data);
+	await v86_write_file("f", data);
 
 	// if install is finished just run the first command
 	if(install_finished)
@@ -104,26 +104,26 @@ function v86_run_next()
 }
 
 // based on create_file in starter.js; this version returns a promise
-FS.prototype.create_file = function(file, data)
+function v86_create_file(file, data)
 {
-    let name = file.split("/").at(-1);
-    let parent_id = this.SearchPath(file).parentid;
-    let not_found = name === "" || parent_id === -1;
+	let name = file.split("/").at(-1);
+	let parent_id = emulator.fs9p.SearchPath(file).parentid;
+	let not_found = name === "" || parent_id === -1;
 
-    if(!not_found)
-        return this.CreateBinaryFile(name, parent_id, data);
-    else
+	if(!not_found)
+		return emulator.fs9p.CreateBinaryFile(name, parent_id, data);
+	else
 		return Promise.reject(new FileNotFoundError());
 };
 
 
 // based on read_file in filesystem.js
-FS.prototype.write_file = function(file, data)
+function v86_write_file(file, data)
 {
-    let p = this.SearchPath(file);
+	let p = emulator.fs9p.SearchPath(file);
 
-    if(p.id === -1)
-        return this.create_file(file, data);
+	if(p.id === -1)
+		return v86_create_file(file, data);
 
-    return this.Write(p.id, 0, data.length, data);
+	return emulator.fs9p.Write(p.id, 0, data.length, data);
 };

@@ -19,3 +19,6 @@ function trim_right(str, chars)
 		str = str.slice(0,-1);
 	return str;
 }
+
+// preserves order; first occurrence is kept
+Array.prototype.uniq = function(){ return [...new Set(this)]; }

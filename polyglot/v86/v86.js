@@ -11,15 +11,14 @@ function v86_create()
 		autostart: true
 	});
 
-	emulator.add_listener("serial0-output-char", first_time_listener);
-}
-
-let serial_data = "";
-function first_time_listener(ch)
-{
-	serial_data += ch;
-	if(serial_data.endsWith("~% ")) on_linux_booted();
-	else if(serial_data.endsWith("install finished\r\nmnt% ")) on_install_finished();
+	let serial_data = "";
+	emulator.add_listener("serial0-output-char", ch => {
+		serial_data += ch;
+		if(serial_data.endsWith("~% ")) on_linux_booted();
+		else if(serial_data.endsWith("install finished\r\nmnt% ")) on_install_finished();
+		// all commands are executed in /mnt
+		else if(serial_data.endsWith("mnt% ")) on_command_finished();
+	});
 }
 
 function on_linux_booted()
@@ -33,21 +32,15 @@ let autostart_commands = false;
 function on_install_finished()
 {
 	console.log("v86: install finished");
-	emulator.remove_listener("serial0-output-char", first_time_listener);
-	emulator.add_listener("serial0-output-char", command_listener);
 	install_finished = true;
 	if(autostart_commands) v86_run_next();
 }
 
-function command_listener(ch)
-{
-	serial_data += ch;
-	// all commands are executed in /mnt
-	if(serial_data.endsWith("mnt% ")) on_command_finished();
-}
-
 function on_command_finished()
 {
+	if(cur_lang == 0) return; // happens after `cd /mnt` in on_linux_booted
+	console.log(`v86: command \`${langs[cur_lang].cmd}\` finished`);
+
 	Promise.all([
 		emulator.fs9p.read_file("stdout"),
 		emulator.fs9p.read_file("stderr"),

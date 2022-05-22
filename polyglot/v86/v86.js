@@ -10,6 +10,7 @@ function v86_create()
 		bzimage:   { url: bin + "buildroot-bzimage.bin" },
 		filesystem: { basefs: bin + "mnt/fs.json", baseurl: bin + "mnt/" },
 		//screen_container: screen_container,
+		disable_mouse: true,
 		autostart: true
 	});
 

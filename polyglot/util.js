@@ -1,6 +1,9 @@
 $ = s => document.querySelector(s);
 $$ = s => document.querySelectorAll(s);
 
+encode = a => new TextEncoder().encode(a);
+decode = a => new TextDecoder().decode(a);
+
 function readfile(url)
 {
 	let xhr = new XMLHttpRequest;

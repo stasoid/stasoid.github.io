@@ -4,11 +4,11 @@
 <link rel="stylesheet" href="styles.css">
 
 <script src="languages.js"></script>
+
+<script src="util.js"></script>
 <script src="tio.js"></script>
 <script src="ato.js"></script>
-<script src="v86/libv86.js"></script>
 <script src="v86/v86.js"></script>
-<script src="util.js"></script>
 
 <script>
 
@@ -53,8 +53,7 @@ function onfinish(n, stdout, stderr, warnings, fn_next)
 		failed.push(n);
 	update_status();
 
-	if(!fn_next) fn_next = run_next;
-	fn_next();
+	(fn_next || run_next)();
 }
 
 // run next untested lang
@@ -70,7 +69,7 @@ function run()
 
 	abort_all_requests();
 	let all = langs.slice(1).map(l=>l.n); // [1,2,..,N]
-	// all = first + all;
+	// all = only || first + all;
 	// all = all.uniq();
 	queue = []; //all.filter(l=>l.type!="v86");
 	v86_queue = [45]; //all.filter(l=>l.type=="v86");

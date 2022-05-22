@@ -1,3 +1,5 @@
+eval(readfile("v86/libv86.js"));
+
 function v86_create()
 {
 	let bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
@@ -12,7 +14,7 @@ function v86_create()
 	});
 
 	let serial_data = "";
-	emulator.add_listener("serial0-output-char", ch => {
+	emulator.add_listener("serial0-output-char", function(ch) {
 		serial_data += ch;
 		if(serial_data.endsWith("~% ")) on_linux_booted();
 		else if(serial_data.endsWith("install finished\r\nmnt% ")) on_install_finished();
@@ -60,9 +62,12 @@ function v86_run(cmd, timeout)
 
 async function v86_run_all(code)
 {
-	let data = new TextEncoder().encode(code);
-	// _todo: check if this operation succeeded
-	await v86_write_file("f", data);
+	await v86_write_file("f", encode(code));
+	// verify
+	if(decode(await emulator.fs9p.read_file("f")) != code) {
+		error("v86_write_file failed");
+		return;
+	}
 
 	// if install is finished just run the first command
 	if(install_finished)

@@ -13,23 +13,23 @@
 
 var code;
 var passed=0, failed=[], skipped=[];
-var internal_error = false;
 var queue, v86_queue; // queues of langs to test
+var internal_error = false;
 
 function run_lang(lang, onfinish)
 {
-	let t = lang.timeout || 5;
+	let timeout = lang.timeout || 5;
 
 	if(lang.type == "tio")
 	{
 		// without timeout it would be just "cat>f;"+lang.cmd
-		let cmd = `cat>f;cat<<'end'>s\n${lang.cmd}\nend\ntimeout -k1 ${t} bash s "$1"`;
+		let cmd = `cat>f;cat<<'end'>s\n${lang.cmd}\nend\ntimeout -k1 ${timeout} bash s "$1"`;
 		let arg = lang.arg ? readfile(lang.arg) : "";
 		tio_run(lang.n, cmd, code, arg, onfinish);
 	}
 	else if(lang.type == "ato")
 	{
-		ato_run(lang.n, code, lang.id, lang.opt, t, onfinish);
+		ato_run(lang.n, code, lang.id, lang.opt, timeout, onfinish);
 	}
 	else // skip
 	{

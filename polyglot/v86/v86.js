@@ -46,7 +46,6 @@ function on_command_finished()
 		emulator.fs9p.read_file("stdout"),
 		emulator.fs9p.read_file("stderr"),
 	]).then(([stdout, stderr]) => {
-		let decode = a => new TextDecoder().decode(a);
 		// read_file returns null if file is empty, decode fails on null
 		stdout = stdout ? decode(stdout) : "";
 		stderr = stderr ? decode(stderr) : "";
@@ -104,12 +103,13 @@ function v86_create_file(file, data)
 
 
 // based on read_file in filesystem.js
-function v86_write_file(file, data)
+async function v86_write_file(file, data)
 {
 	let p = emulator.fs9p.SearchPath(file);
 
 	if(p.id === -1)
 		return v86_create_file(file, data);
 
+	await emulator.fs9p.ChangeSize(p.id, data.length);
 	return emulator.fs9p.Write(p.id, 0, data.length, data);
 }

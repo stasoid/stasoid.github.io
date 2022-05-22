@@ -1,3 +1,5 @@
+print = console.log;
+
 $ = s => document.querySelector(s);
 $$ = s => document.querySelectorAll(s);
 
@@ -18,8 +20,9 @@ function error(msg)
 	internal_error = true;
 }
 
-function trim_right(str, chars)
+String.prototype.rtrim = function(chars)
 {
+	let str = this;
 	if(!chars) chars = " \r\n\t";
 	while(chars.indexOf(str.at(-1)) != -1)
 		str = str.slice(0,-1);

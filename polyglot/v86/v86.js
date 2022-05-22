@@ -1,4 +1,4 @@
-eval(readfile("v86/libv86.js"));
+eval(readfile("v86/libv86.js")); // import libv86
 
 function v86_create()
 {
@@ -25,23 +25,22 @@ function v86_create()
 
 function on_linux_booted()
 {
-	console.log("v86: linux booted");
-	emulator.serial0_send("cd /mnt\nsh install\n");
+	print("v86: linux booted");
+	emulator.serial0_send("cd /mnt && sh install\n");
 }
 
 let install_finished = false;
 let autostart_commands = false;
 function on_install_finished()
 {
-	console.log("v86: install finished");
+	print("v86: install finished");
 	install_finished = true;
 	if(autostart_commands) v86_run_next();
 }
 
 function on_command_finished()
 {
-	if(cur_lang == 0) return; // happens after `cd /mnt` in on_linux_booted
-	console.log(`v86: command \`${langs[cur_lang].cmd}\` finished`);
+	print(`v86: command \`${langs[cur_lang].cmd}\` finished`);
 
 	Promise.all([
 		emulator.fs9p.read_file("stdout"),
@@ -64,10 +63,7 @@ async function v86_run_all(code)
 {
 	await v86_write_file("f", encode(code));
 	// verify
-	if(decode(await emulator.fs9p.read_file("f")) != code) {
-		error("v86_write_file failed");
-		return;
-	}
+	if(decode(await emulator.fs9p.read_file("f")) != code) { error("v86_write_file failed"); return; }
 
 	// if install is finished just run the first command
 	if(install_finished)

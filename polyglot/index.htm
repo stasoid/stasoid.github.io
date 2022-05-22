@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="styles.css">
 
 <script src="languages.js"></script>
-
 <script src="util.js"></script>
 <script src="tio.js"></script>
 <script src="ato.js"></script>
@@ -15,7 +14,7 @@
 var code;
 var passed=0, failed=[], skipped=[];
 var internal_error = false;
-var queue, v86_queue; // queue of langs to test
+var queue, v86_queue; // queues of langs to test
 
 function run_lang(lang, onfinish)
 {
@@ -44,7 +43,7 @@ function onfinish(n, stdout, stderr, warnings, fn_next)
 {
 	langs[n].result = {stdout, stderr, warnings};
 
-	var result = trim_right(stdout, "\r\n");
+	var result = stdout.rtrim("\r\n");
 	var expected_result = langs[n].stdout || n+"";
 
 	if(result == expected_result)

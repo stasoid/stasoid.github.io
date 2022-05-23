@@ -1,4 +1,4 @@
-eval(readfile("v86/libv86.js")); // import libv86
+//eval(readfile("v86/libv86.js")); // import libv86
 
 function v86_create()
 {
@@ -39,19 +39,18 @@ function on_install_finished()
 	if(autostart_commands) v86_run_next();
 }
 
-function on_command_finished()
+async function on_command_finished()
 {
 	print(`v86: command \`${langs[cur_lang].cmd}\` finished`);
 
-	Promise.all([
-		emulator.fs9p.read_file("stdout"),
-		emulator.fs9p.read_file("stderr"),
-	]).then(([stdout, stderr]) => {
-		// read_file returns null if file is empty, decode fails on null
-		stdout = stdout ? decode(stdout) : "";
-		stderr = stderr ? decode(stderr) : "";
-		onfinish(cur_lang, stdout, stderr, "", v86_run_next);
-	});
+	let stdout = await emulator.fs9p.read_file("stdout");
+	let stderr = await emulator.fs9p.read_file("stderr");
+
+	// stdout/stderr may be null, see https://github.com/copy/v86/issues/659
+	stdout = stdout ? decode(stdout) : "";
+	stderr = stderr ? decode(stderr) : "";
+
+	onfinish(cur_lang, stdout, stderr, "", v86_run_next);
 }
 
 function v86_run(cmd, timeout)

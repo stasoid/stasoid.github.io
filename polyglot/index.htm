@@ -17,7 +17,7 @@ var passed=0, failed=[], skipped=[];
 var queue, v86_queue; // queues of langs to test
 var internal_error = false;
 
-function run_lang(lang, onfinish)
+function run(lang)
 {
 	let timeout = lang.timeout || 5;
 
@@ -60,10 +60,10 @@ function onfinish(n, stdout, stderr, warnings, fn_next)
 function run_next()
 {
 	let n = queue.shift();
-	if(n) run_lang(langs[n], onfinish);
+	if(n) run(langs[n]);
 }
 
-function run()
+function run_all()
 {
 	code = editor.value.replace(/\7/g, '\r'); // BEL -> CR
 
@@ -117,7 +117,7 @@ function update_status()
 
 onload = function()
 {
-	v86_create();
+	v86_start();
 	// make buttons unfocusable, so they don't steal focus from the editor
 	$$('button').forEach(btn => btn.addEventListener("mousedown", evt=>evt.preventDefault()));
 	editor.value = readfile("346.txt");
@@ -130,6 +130,6 @@ onload = function()
 
 <body>
   <textarea id=editor rows=28 cols=130 wrap=off spellcheck=false autofocus style="font:16pt Consolas">print(1)#i2</textarea> <br>
-  <button onclick="run()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
+  <button onclick="run_all()" style="font:16pt Arial">run</button>&nbsp;&nbsp;&nbsp;
   <span id=status style="font:16pt Arial"></span>
 </body>

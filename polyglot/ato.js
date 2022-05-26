@@ -15,7 +15,6 @@ function ato_run(n, code, lang_id, options, timeout, onfinish)
 	}));
 	socket.onmessage = async event => {
 		let response = await msgpack.decodeAsync(event.data.stream());
-		let decode = a => new TextDecoder().decode(a);
 		onfinish(n, decode(response.stdout), decode(response.stderr));
 	}
 }

@@ -1,0 +1,26 @@
+<!doctype html>
+<script src="v86/libv86.js"></script>
+
+<script>
+onload = function()
+{
+	let bin = "https://raw.githubusercontent.com/stasoid/polyglot-v86-binaries/main/";
+	new V86Starter({
+		wasm_path: bin + "v86.wasm",
+		bios:      { url: bin + "seabios.bin" },
+		vga_bios:  { url: bin + "vgabios.bin" },
+		hda: {
+			url: "https://v86-user-images.b-cdn.net/stasoid/win2k-nano/file.bin",
+			size: 800 * 1024 * 1024,
+			async: true
+		},
+		screen_container: screen_container,
+		autostart: true
+	});
+}
+</script>
+
+<div id=screen_container>
+	<div style="white-space: pre; font: 14px monospace"></div>
+	<canvas></canvas>
+</div>

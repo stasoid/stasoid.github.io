@@ -1,0 +1,3290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WinMerge File Compare Report</title>
+<style>
+<!--
+table { table-layout: fixed; margin: 0; border: 1px solid #a0a0a0; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); }
+th { position: sticky; top: 0; }
+td,th { word-break: break-all; font-size: 12pt; padding: 0 3px; }
+tr { vertical-align: top; }
+.title { font-weight: bold; color: white; background-color: blue; vertical-align: top; text-align: center; padding: 4px 4px; background: linear-gradient(mediumblue, darkblue);}
+.sf3b2 {color: #d4d4d4; background-color: #1e1e1e; }
+.sf3b5 {color: #d4d4d4; background-color: #264f78; }
+.sf3b14 {color: #d4d4d4; background-color: #366041; }
+.sf3b16 {color: #d4d4d4; background-color: #3d6525; }
+.sf3b18 {color: #d4d4d4; background-color: #6f1313; }
+.sf3b19 {color: #d4d4d4; background-color: #6f1313; }
+.sf6b2 {color: #d4d4d4; background-color: #1e1e1e; }
+.sf6b5 {color: #d4d4d4; background-color: #264f78; }
+.sf6b14 {color: #d4d4d4; background-color: #366041; }
+.sf6b16 {color: #d4d4d4; background-color: #3d6525; }
+.sf6b18 {color: #d4d4d4; background-color: #6f1313; }
+.sf6b19 {color: #d4d4d4; background-color: #6f1313; }
+.sf7b2 {color: #569cd6; background-color: #1e1e1e; }
+.sf7b5 {color: #569cd6; background-color: #264f78; }
+.sf7b14 {color: #569cd6; background-color: #366041; }
+.sf7b16 {color: #569cd6; background-color: #3d6525; }
+.sf7b18 {color: #569cd6; background-color: #6f1313; }
+.sf7b19 {color: #569cd6; background-color: #6f1313; }
+.sf8b2 {color: #d4d4d4; background-color: #1e1e1e; }
+.sf8b5 {color: #d4d4d4; background-color: #264f78; }
+.sf8b14 {color: #d4d4d4; background-color: #366041; }
+.sf8b16 {color: #d4d4d4; background-color: #3d6525; }
+.sf8b18 {color: #d4d4d4; background-color: #6f1313; }
+.sf8b19 {color: #d4d4d4; background-color: #6f1313; }
+.sf9b2 {color: #6a9955; background-color: #1e1e1e; }
+.sf9b5 {color: #6a9955; background-color: #264f78; }
+.sf9b14 {color: #6a9955; background-color: #366041; }
+.sf9b16 {color: #6a9955; background-color: #3d6525; }
+.sf9b18 {color: #6a9955; background-color: #6f1313; }
+.sf9b19 {color: #6a9955; background-color: #6f1313; }
+.sf10b2 {color: #b5cea8; background-color: #1e1e1e; }
+.sf10b5 {color: #b5cea8; background-color: #264f78; }
+.sf10b14 {color: #b5cea8; background-color: #366041; }
+.sf10b16 {color: #b5cea8; background-color: #3d6525; }
+.sf10b18 {color: #b5cea8; background-color: #6f1313; }
+.sf10b19 {color: #b5cea8; background-color: #6f1313; }
+.sf11b2 {color: #d4d4d4; background-color: #1e1e1e; }
+.sf11b5 {color: #d4d4d4; background-color: #264f78; }
+.sf11b14 {color: #d4d4d4; background-color: #366041; }
+.sf11b16 {color: #d4d4d4; background-color: #3d6525; }
+.sf11b18 {color: #d4d4d4; background-color: #6f1313; }
+.sf11b19 {color: #d4d4d4; background-color: #6f1313; }
+.sf12b2 {color: #ce9178; background-color: #1e1e1e; }
+.sf12b5 {color: #ce9178; background-color: #264f78; }
+.sf12b14 {color: #ce9178; background-color: #366041; }
+.sf12b16 {color: #ce9178; background-color: #3d6525; }
+.sf12b18 {color: #ce9178; background-color: #6f1313; }
+.sf12b19 {color: #ce9178; background-color: #6f1313; }
+.sf13b2 {color: #268bc9; background-color: #1e1e1e; }
+.sf13b5 {color: #268bc9; background-color: #264f78; }
+.sf13b14 {color: #268bc9; background-color: #366041; }
+.sf13b16 {color: #268bc9; background-color: #3d6525; }
+.sf13b18 {color: #268bc9; background-color: #6f1313; }
+.sf13b19 {color: #268bc9; background-color: #6f1313; }
+.sf15b2 {color: #ffffff; background-color: #1e1e1e; }
+.sf15b5 {color: #ffffff; background-color: #264f78; }
+.sf15b14 {color: #ffffff; background-color: #366041; }
+.sf15b16 {color: #ffffff; background-color: #3d6525; }
+.sf15b18 {color: #ffffff; background-color: #6f1313; }
+.sf15b19 {color: #ffffff; background-color: #6f1313; }
+.sf17b2 {color: #ffffff; background-color: #1e1e1e; }
+.sf17b5 {color: #ffffff; background-color: #264f78; }
+.sf17b14 {color: #ffffff; background-color: #366041; }
+.sf17b16 {color: #ffffff; background-color: #3d6525; }
+.sf17b18 {color: #ffffff; background-color: #6f1313; }
+.sf17b19 {color: #ffffff; background-color: #6f1313; }
+.sf20b2 {color: #6c71c4; background-color: #1e1e1e; }
+.sf20b5 {color: #6c71c4; background-color: #264f78; }
+.sf20b14 {color: #6c71c4; background-color: #366041; }
+.sf20b16 {color: #6c71c4; background-color: #3d6525; }
+.sf20b18 {color: #6c71c4; background-color: #6f1313; }
+.sf20b19 {color: #6c71c4; background-color: #6f1313; }
+.sf21b2 {color: #eee8d5; background-color: #1e1e1e; }
+.sf21b5 {color: #eee8d5; background-color: #264f78; }
+.sf21b14 {color: #eee8d5; background-color: #366041; }
+.sf21b16 {color: #eee8d5; background-color: #3d6525; }
+.sf21b18 {color: #eee8d5; background-color: #6f1313; }
+.sf21b19 {color: #eee8d5; background-color: #6f1313; }
+.sf3b2i {color: #5a5a5a; background-color: #1e1e1e; }
+.sf3b5i {color: #5f7b96; background-color: #264f78; }
+.sf3b14i {color: #6a8671; background-color: #366041; }
+.sf3b16i {color: #6f895f; background-color: #3d6525; }
+.sf3b18i {color: #905353; background-color: #6f1313; }
+.sf3b19i {color: #905353; background-color: #6f1313; }
+.sf6b2i {color: #5a5a5a; background-color: #1e1e1e; }
+.sf6b5i {color: #5f7b96; background-color: #264f78; }
+.sf6b14i {color: #6a8671; background-color: #366041; }
+.sf6b16i {color: #6f895f; background-color: #3d6525; }
+.sf6b18i {color: #905353; background-color: #6f1313; }
+.sf6b19i {color: #905353; background-color: #6f1313; }
+.sf7b2i {color: #30475b; background-color: #1e1e1e; }
+.sf7b5i {color: #356897; background-color: #264f78; }
+.sf7b14i {color: #407372; background-color: #366041; }
+.sf7b16i {color: #45775f; background-color: #3d6525; }
+.sf7b18i {color: #674053; background-color: #6f1313; }
+.sf7b19i {color: #674053; background-color: #6f1313; }
+.sf8b2i {color: #5a5a5a; background-color: #1e1e1e; }
+.sf8b5i {color: #5f7b96; background-color: #264f78; }
+.sf8b14i {color: #6a8671; background-color: #366041; }
+.sf8b16i {color: #6f895f; background-color: #3d6525; }
+.sf8b18i {color: #905353; background-color: #6f1313; }
+.sf8b19i {color: #905353; background-color: #6f1313; }
+.sf9b2i {color: #374630; background-color: #1e1e1e; }
+.sf9b5i {color: #3c676d; background-color: #264f78; }
+.sf9b14i {color: #477247; background-color: #366041; }
+.sf9b16i {color: #4b7634; background-color: #3d6525; }
+.sf9b18i {color: #6e3f28; background-color: #6f1313; }
+.sf9b19i {color: #6e3f28; background-color: #6f1313; }
+.sf10b2i {color: #50584b; background-color: #1e1e1e; }
+.sf10b5i {color: #557987; background-color: #264f78; }
+.sf10b14i {color: #608463; background-color: #366041; }
+.sf10b16i {color: #648750; background-color: #3d6525; }
+.sf10b18i {color: #865144; background-color: #6f1313; }
+.sf10b19i {color: #865144; background-color: #6f1313; }
+.sf11b2i {color: #5a5a5a; background-color: #1e1e1e; }
+.sf11b5i {color: #5f7b96; background-color: #264f78; }
+.sf11b14i {color: #6a8671; background-color: #366041; }
+.sf11b16i {color: #6f895f; background-color: #3d6525; }
+.sf11b18i {color: #905353; background-color: #6f1313; }
+.sf11b19i {color: #905353; background-color: #6f1313; }
+.sf12b2i {color: #58443b; background-color: #1e1e1e; }
+.sf12b5i {color: #5d6478; background-color: #264f78; }
+.sf12b14i {color: #687053; background-color: #366041; }
+.sf12b16i {color: #6d7340; background-color: #3d6525; }
+.sf12b18i {color: #8e3c34; background-color: #6f1313; }
+.sf12b19i {color: #8e3c34; background-color: #6f1313; }
+.sf13b2i {color: #204256; background-color: #1e1e1e; }
+.sf13b5i {color: #266292; background-color: #264f78; }
+.sf13b14i {color: #316e6e; background-color: #366041; }
+.sf13b16i {color: #36715b; background-color: #3d6525; }
+.sf13b18i {color: #573a4f; background-color: #6f1313; }
+.sf13b19i {color: #573a4f; background-color: #6f1313; }
+.sf15b2i {color: #686868; background-color: #1e1e1e; }
+.sf15b5i {color: #6e89a4; background-color: #264f78; }
+.sf15b14i {color: #789480; background-color: #366041; }
+.sf15b16i {color: #7d986d; background-color: #3d6525; }
+.sf15b18i {color: #9e6161; background-color: #6f1313; }
+.sf15b19i {color: #9e6161; background-color: #6f1313; }
+.sf17b2i {color: #686868; background-color: #1e1e1e; }
+.sf17b5i {color: #6e89a4; background-color: #264f78; }
+.sf17b14i {color: #789480; background-color: #366041; }
+.sf17b16i {color: #7d986d; background-color: #3d6525; }
+.sf17b18i {color: #9e6161; background-color: #6f1313; }
+.sf17b19i {color: #9e6161; background-color: #6f1313; }
+.sf20b2i {color: #373955; background-color: #1e1e1e; }
+.sf20b5i {color: #3d5a91; background-color: #264f78; }
+.sf20b14i {color: #47656c; background-color: #366041; }
+.sf20b16i {color: #4c6859; background-color: #3d6525; }
+.sf20b18i {color: #6f324d; background-color: #6f1313; }
+.sf20b19i {color: #6f324d; background-color: #6f1313; }
+.sf21b2i {color: #63615a; background-color: #1e1e1e; }
+.sf21b5i {color: #688196; background-color: #264f78; }
+.sf21b14i {color: #738d72; background-color: #366041; }
+.sf21b16i {color: #77905f; background-color: #3d6525; }
+.sf21b18i {color: #995953; background-color: #6f1313; }
+.sf21b19i {color: #995953; background-color: #6f1313; }
+.cn {text-align: center; word-break: normal; color: #d4d4d4; background-color: #101010;}
+.ln {text-align: right; word-break: normal; color: #d4d4d4; background-color: #101010;}
+-->
+</style>
+</head>
+<body>
+<table style="width: 100%; border-collapse: collapse;">
+<colgroup>
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+</colgroup>
+<tbody>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># 6 "($11k_rv+'50;+'51;5 5 %$\--$[0=@$a a tqx\" &nbsp;/*4veDhfdIg/\"" 3 4//*{{{'F*Pi^5 6-di26qxy}363qx}318qkp16[.qx]"8=,k]\[] PPX~_~)"xvyx" \( # CO"14"#:9 {?63#k9 # a &nbsp; k zzzzkf kf k zzzzzd kf k zzzzza kf bfz "'" #\\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># 6 "($11k_rv+'50;+'51;5 5 %$\--$[0=@$a a tqx\" &nbsp;/*4veDhfdIg/\"" 3 4//*{{{'F*Pi^5 6-di26qxy}363qx}318qkp16[.qx]"8=,k]\[] PPX~_~)"xvyx" \( # CO"14"#:9 {?63#k9 # a &nbsp; k zzzzkf kf k zzzzzd kf k zzzzza kf bfz "'" #\\</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d1" href="#d1">.</a></td><td style="color: #d4d4d4; background-color: #4b5a2a; "><code><span style="color: #d4d4d4; background-color: #4b5a2a; "># 1"7"//[']['] &nbsp; &nbsp; ```` &nbsp; &nbsp; &nbsp;[&gt;.&gt;.?]~~)[aatxy iiipsddpsdoh (22)S ## &amp;rem &nbsp; &nbsp; &nbsp;/ \ &nbsp; &nbsp; &lt;!-- &nbsp; &nbsp;5mxf xAegguEayiuFt@.7.8.2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;MZWWWWWWWW;WUU &nbsp;U UUzR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]++(--[ &nbsp; &nbsp; x &nbsp; &nbsp; &nbsp; &nbsp;Lear,x :_a5# 202ø!},{P_&lt;Ám/e!&lt;ÁmOe!&lt;É}M&lt;ÁmS15%!!%BB4<wbr>4,222%!!%BBPZPYAAA4D,5P[5?4-0!&lt;½!!22&lt;2/<wbr>!]ss1]'[kkX"204".â'_PPQss&gt;3Ā~&gt;1Ā~&gt;7Ā~v 7 999993 1 7 3 1 8 1 1 55 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #z#1111#y#y#y#_# &nbsp; &nbsp; &nbsp; &nbsp;{! 1&gt;?7ДOq#t#&gt;2/Wr#t#t#q#68#r#t#t#68#q#63#<wbr>r#t#t#6v#&gt;#&lt;/Wr#6}#y/===Wr#7ЯOq#&gt;J7Д/Wr<wbr>#y&lt;Wr#&gt;5/Wr#t#t#6y#&gt;-=/Wr#6|#&gt;6/Wr122! 1退</span><span class="sf3b19">&nbsp; &nbsp;%PDF-2</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">&nbsp; </span><span style="color: #d4d4d4; background-color: #4b5a2a; ">coding=utf-8 &nbsp; &nbsp; &nbsp; &nbsp;@ [[[["472"?]]]]******&lt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b5a2a; "><code><span style="color: #d4d4d4; background-color: #4b5a2a; "># 1"7"//[']['] &nbsp; &nbsp; ```` &nbsp; &nbsp; &nbsp;[&gt;.&gt;.?]~~)[aatxy iiipsddpsdoh (22)S ## &amp;rem &nbsp; &nbsp; &nbsp;/ \ &nbsp; &nbsp; &lt;!-- &nbsp; &nbsp;5mxf xAegguEayiuFt@.7.8.2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;MZWWWWWWWW;WUU &nbsp;U UUzR &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ]++(--[ &nbsp; &nbsp; x &nbsp; &nbsp; &nbsp; &nbsp;Lear,x :_a5# 202ø!},{P_&lt;Ám/e!&lt;ÁmOe!&lt;É}M&lt;ÁmS15%!!%BB4<wbr>4,222%!!%BBPZPYAAA4D,5P[5?4-0!&lt;½!!22&lt;2/<wbr>!]ss1]'[kkX"204".â'_PPQss&gt;3Ā~&gt;1Ā~&gt;7Ā~v 7 999993 1 7 3 1 8 1 1 55 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #z#1111#y#y#y#_# &nbsp; &nbsp; &nbsp; &nbsp;{! 1&gt;?7ДOq#t#&gt;2/Wr#t#t#q#68#r#t#t#68#q#63#<wbr>r#t#t#6v#&gt;#&lt;/Wr#6}#y/===Wr#7ЯOq#&gt;J7Д/Wr<wbr>#y&lt;Wr#&gt;5/Wr#t#t#6y#&gt;-=/Wr#6|#&gt;6/Wr122! 1退</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">&nbsp; </span><span class="sf3b19">%PDF-1. &nbsp;</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">coding=utf-8 &nbsp; &nbsp; &nbsp; &nbsp;@ [[[["472"?]]]]******&lt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b5a2a; "><code><span style="color: #d4d4d4; background-color: #4b5a2a; "># if-0// &nbsp; &nbsp; &nbsp; &nbsp;nthteo 18&amp;1&amp; nthieo nthneo anet\#184 O@ .^R+ + </span><span class="sf3b14">+.V&gt;!/D&lt;----.</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">&nbsp;</span><span class="sf3b19">/112\11&amp;if </span><span style="color: #d4d4d4; background-color: #4b5a2a; ">-%*==-* (echo 335&amp;exit)else goto e&amp;WWWWWWWWWWWWWW#WWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWW#WWWWWWWWWWWWWWWWWWWW;WWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WR Cicero,</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b5a2a; "><code><span style="color: #d4d4d4; background-color: #4b5a2a; "># if-0// &nbsp; &nbsp; &nbsp; &nbsp;nthteo 18&amp;1&amp; nthieo nthneo anet\#184 O@ .^R+ + </span><span class="sf3b14">+.V&gt;!/D&lt;----.1/112\11&amp;if</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">&nbsp;</span><span style="color: #d4d4d4; background-color: #4b5a2a; ">-%*==-* (echo 335&amp;exit)else goto e&amp;WWWWWWWWWWWWWW#WWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWW#WWWWWWWWWWWWWWWWWWWW;WWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW<wbr>WR Cicero,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#6!@`D&gt;&gt;if 3&gt;3*&gt;++++++ \ &nbsp; &nbsp; &nbsp; &nbsp;/ 78"oo@" &nbsp;Thurio, &nbsp; ;L // &gt;"082",,,@R_++ &nbsp;xx-----xx._+++ &nbsp;##### #######._ &nbsp; #### ## &nbsp;###### &nbsp; &nbsp; ####&gt; &nbsp; [] &nbsp; ###### # #### &nbsp;####### &nbsp; &nbsp; #### `'[]'[]`###### # #### &nbsp;####### &nbsp; &nbsp;#EEEEEδΘΔΔΔΘΔΘλ</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#6!@`D&gt;&gt;if 3&gt;3*&gt;++++++ \ &nbsp; &nbsp; &nbsp; &nbsp;/ 78"oo@" &nbsp;Thurio, &nbsp; ;L // &gt;"082",,,@R_++ &nbsp;xx-----xx._+++ &nbsp;##### #######._ &nbsp; #### ## &nbsp;###### &nbsp; &nbsp; ####&gt; &nbsp; [] &nbsp; ###### # #### &nbsp;####### &nbsp; &nbsp; #### `'[]'[]`###### # #### &nbsp;####### &nbsp; &nbsp;#EEEEEδΘΔΔΔΘΔΘλ</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d2" href="#d2">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; "># endif/* &nbsp; v 1 &gt;&gt;&gt;&gt;@::c&gt;&gt;"&gt;r"{\&gt;&gt;&gt;&gt;&gt; @ 0:8:8/_}\(*[&gt;]R 10G|'53' Sly,_</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;</span><span class="sf3b18">2222\)\[ </span><span style="color: #d4d4d4; background-color: #373d29; ">&gt;&gt;&gt;&gt;&gt;#####&gt;#######&gt;&gt;&gt;#&gt;#&gt;&gt;&gt;&gt;#####&gt;&gt;#&gt;&gt;&gt;<wbr>#&gt;&gt;&gt;#&gt;&gt;&gt;&gt;#####&gt;####&gt;&gt;###&gt;&gt;&gt;####&gt;#&gt;&gt;# ##### &nbsp;# &nbsp; &nbsp;##### #### &nbsp;### &nbsp; #### # &nbsp;# ##### &nbsp;# &nbsp; &nbsp;#</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; "># endif/* &nbsp; v 1 &gt;&gt;&gt;&gt;@::c&gt;&gt;"&gt;r"{\&gt;&gt;&gt;&gt;&gt; @ 0:8:8/_}\(*[&gt;]R 10G|'53' Sly,_</span><span class="sf3b18">&nbsp; &nbsp;22\)\[</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;</span><span style="color: #d4d4d4; background-color: #373d29; ">&gt;&gt;&gt;&gt;&gt;#####&gt;#######&gt;&gt;&gt;#&gt;#&gt;&gt;&gt;&gt;#####&gt;&gt;#&gt;&gt;&gt;<wbr>#&gt;&gt;&gt;#&gt;&gt;&gt;&gt;#####&gt;####&gt;&gt;###&gt;&gt;&gt;####&gt;#&gt;&gt;# ##### &nbsp;# &nbsp; &nbsp;##### #### &nbsp;### &nbsp; #### # &nbsp;# ##### &nbsp;# &nbsp; &nbsp;#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#comment -[v&gt;]-main=-[165]- &nbsp; ###[@,,,"279"_]#-$y2222]&gt;252O @&gt;&gt;&gt;&gt;&gt;&gt;&gt; h$s o#&gt;&gt;&gt;326&gt;########&gt;&gt;&gt;&gt;##&gt;###&gt;######&gt;####<wbr>####&gt;####&gt;#####&gt;#######&gt;#####&gt;###&gt;&gt;&gt;&gt;#&gt;<wbr>#&gt;####&gt;###&gt;#####&gt;#######&gt;#####&gt;###&gt;&gt;&gt;&gt;#<wbr>&gt;#&gt;####&gt;###&gt;#####&gt;#&gt;&gt;&gt;&gt;&gt;&gt;&gt;9</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#comment -[v&gt;]-main=-[165]- &nbsp; ###[@,,,"279"_]#-$y2222]&gt;252O @&gt;&gt;&gt;&gt;&gt;&gt;&gt; h$s o#&gt;&gt;&gt;326&gt;########&gt;&gt;&gt;&gt;##&gt;###&gt;######&gt;####<wbr>####&gt;####&gt;#####&gt;#######&gt;#####&gt;###&gt;&gt;&gt;&gt;#&gt;<wbr>#&gt;####&gt;###&gt;#####&gt;#######&gt;#####&gt;###&gt;&gt;&gt;&gt;#<wbr>&gt;#&gt;####&gt;###&gt;#####&gt;#&gt;&gt;&gt;&gt;&gt;&gt;&gt;9</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#cs/e &nbsp; &nbsp; &nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; @!:!8:6:2/_&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;;<wbr> &nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;_&gt;&gt;&gt;&gt;eeePs#v##########; ### ## ##### &nbsp;## #### ## # ##### &nbsp;##^##### #### &nbsp; ##### ## # ## &nbsp;## #### &nbsp;## ##### #### &nbsp; ##### ## # ## &nbsp;## ####</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#cs/e &nbsp; &nbsp; &nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; @!:!8:6:2/_&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;;<wbr> &nbsp;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;_&gt;&gt;&gt;&gt;eeePs#v##########; ### ## ##### &nbsp;## #### ## # ##### &nbsp;##^##### #### &nbsp; ##### ## # ## &nbsp;## #### &nbsp;## ##### #### &nbsp; ##### ## # ## &nbsp;## ####</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#[=[]e] xx xx xx xx xx bb xx xx &nbsp; &nbsp; &nbsp;@,,,"361";@,,,"362_" ;&gt;# 23-2g_"01",,@_ &nbsp; &nbsp; &nbsp; #????!?!??!??!!!!???!?!??!!?!?!!!!!?!!!<wbr>!?????!????????????????????! :1*23/5%6E2 iiiiiiiiiiiiiiiiiii r-[&gt;+&lt;-----]&gt;+.---.-.iiiiiiiiiiiiiii</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#[=[]e] xx xx xx xx xx bb xx xx &nbsp; &nbsp; &nbsp;@,,,"361";@,,,"362_" ;&gt;# 23-2g_"01",,@_ &nbsp; &nbsp; &nbsp; #????!?!??!??!!!!???!?!??!!?!?!!!!!?!!!<wbr>!?????!????????????????????! :1*23/5%6E2 iiiiiiiiiiiiiiiiiii r-[&gt;+&lt;-----]&gt;+.---.-.iiiiiiiiiiiiiii</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#11 cbbbzcba aaabaca1tauaxayatbubxbtcuc 11 &nbsp;Page,_ xx xx r3o5o8ox xx xx .-#351$#&amp; &nbsp;# 329284 &nbsp; 38839237137637028538937437711 37239942236736836636911 289364373 &nbsp; 375393</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#11 cbbbzcba aaabaca1tauaxayatbubxbtcuc 11 &nbsp;Page,_ xx xx r3o5o8ox xx xx .-#351$#&amp; &nbsp;# 329284 &nbsp; 38839237137637028538937437711 37239942236736836636911 289364373 &nbsp; 375393</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#~[! R++++++x +++++++++\+++++++++++++++++++++++++++++<wbr>+++++U.._+++++++._+++o+++o--ox#] Puck,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#~[! R++++++x +++++++++\+++++++++++++++++++++++++++++<wbr>+++++U.._+++++++._+++o+++o--ox#] Puck,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#######################################<wbr>#######################################<wbr>######&gt;121 *1220*1211k*1220 2 2 2 11 Caius,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#######################################<wbr>#######################################<wbr>######&gt;121 *1220*1211k*1220 2 2 2 11 Caius,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#{{{{]~*[~* -[&gt;+&lt;-----]&gt;-._+++++._+._@]+-}}[._+;;+;<wbr>;+;;+&lt;&gt;;;+;;+;;+;;;;;;+;;+;;.._]}++&lt;^&gt;-<wbr>-[^&gt;[+[&gt;+^-----]&gt;.- ._+++._&gt; ]&lt;[+[&gt;+&lt;-----]&gt;--._++++._+++._&lt;]]g[&gt;++p<wbr>sg--.--._+._q]+-+&lt;[&lt;=oC&lt;=oC&lt;._&gt;&gt;&gt;&gt;-]^&gt;[<wbr>&lt;-[&gt;+&lt;-----]&gt;-@@+.---@._+&gt;$] &nbsp;)++$--![+++[&gt;+++++++&lt;-]&gt;+._+++++.._&gt;] %( &nbsp;{{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{ &lt;&lt;&gt;&gt; }&lt;}&gt;}[&lt;}}&lt;&lt;}&lt;&lt;&lt;&lt;&lt;}&lt;&lt;}&lt;'4o'6o@&lt;&lt;&lt;}&lt;&lt;&lt;}}}<wbr>&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}}&lt;}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;}}}&lt;}}<wbr>&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;}] &nbsp;&gt;&gt;\[/&gt;\/\&gt;&gt;&gt;&gt;&gt;&gt;&gt;]&gt;\[./&gt;&gt;\/\./\/&gt;&gt;&gt;\./] &nbsp;[328][] &nbsp;[[[[.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>.,][.].,][.][.][.].,] &nbsp;[[].[[[</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#{{{{]~*[~* -[&gt;+&lt;-----]&gt;-._+++++._+._@]+-}}[._+;;+;<wbr>;+;;+&lt;&gt;;;+;;+;;+;;;;;;+;;+;;.._]}++&lt;^&gt;-<wbr>-[^&gt;[+[&gt;+^-----]&gt;.- ._+++._&gt; ]&lt;[+[&gt;+&lt;-----]&gt;--._++++._+++._&lt;]]g[&gt;++p<wbr>sg--.--._+._q]+-+&lt;[&lt;=oC&lt;=oC&lt;._&gt;&gt;&gt;&gt;-]^&gt;[<wbr>&lt;-[&gt;+&lt;-----]&gt;-@@+.---@._+&gt;$] &nbsp;)++$--![+++[&gt;+++++++&lt;-]&gt;+._+++++.._&gt;] %( &nbsp;{{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{{ {{ &lt;&lt;&gt;&gt; }&lt;}&gt;}[&lt;}}&lt;&lt;}&lt;&lt;&lt;&lt;&lt;}&lt;&lt;}&lt;'4o'6o@&lt;&lt;&lt;}&lt;&lt;&lt;}}}<wbr>&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}}&lt;}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;}}}&lt;}}<wbr>&lt;}}&lt;}}&lt;}}&lt;}}&lt;}}}&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;}] &nbsp;&gt;&gt;\[/&gt;\/\&gt;&gt;&gt;&gt;&gt;&gt;&gt;]&gt;\[./&gt;&gt;\/\./\/&gt;&gt;&gt;\./] &nbsp;[328][] &nbsp;[[[[.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>[.][.][.][.][.][.][.][.][.][.][.][.][.]<wbr>.,][.].,][.][.][.].,] &nbsp;[[].[[[</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#* *#p 173#*</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#* *#p 173#*</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#`⟪`⟪\⟫9999 9 9e:</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#`⟪`⟪\⟫9999 9 9e:</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#{ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#{ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#/*9 999 99 9999 &nbsp;nMn MMMMMMMnnMnnnMnMMMMMMMnMMnnnnnM&gt;MnMnMnn<wbr>MnMnnnn &nbsp; //`. :-print(186). end_of_file. `MnM &nbsp; Egeus, &nbsp; &nbsp;@,,, "286"_+1y2 #&lt;"67",,@_	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B'''	0C`297'pri<wbr>nt quit`sssMMMMMMMMnnMnMnnnMnMMMM''';201-1<wbr>|&gt;print;exit 0	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B	0C	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#/*9 999 99 9999 &nbsp;nMn MMMMMMMnnMnnnMnMMMMMMMnMMnnnnnM&gt;MnMnMnn<wbr>MnMnnnn &nbsp; //`. :-print(186). end_of_file. `MnM &nbsp; Egeus, &nbsp; &nbsp;@,,, "286"_+1y2 #&lt;"67",,@_	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B'''	0C`297'pri<wbr>nt quit`sssMMMMMMMMnnMnMnnnMnMMMM''';201-1<wbr>|&gt;print;exit 0	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B	0C	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0B	0<wbr>B	0B	0B	0B	0B	0B	0B	0B	0B</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#|9 e:&lt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#|9 e:&lt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#( 9 9999</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#( 9 9999</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;#//--&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;#//--&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=99&gt;&lt;!--e$P+++++*D*+++1++1E!s<wbr>ss \font\f=cmr12\f352\end Gaunt,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=99&gt;&lt;!--e$P+++++*D*+++1++1E!s<wbr>ss \font\f=cmr12\f352\end Gaunt,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#- bqbqbqLzLzLz TcTcTcRqRqRq TzTzTzRtRtRtMbMbMbTqTqTqAbAbAbTmTmTmBqB<wbr>qBqMzMzMzUgUgUg\	07331;"$avdxddxdxz$x${<wbr>print+191}$x";exit #?&gt;\	07'''p'; @'	07[puts 59][exit]'''	07try:a=222;b=9;p=2;m=-424<wbr>;z=2-2;import os,sys,inspect;exec("2?2");print (349)	07except:_=len &nbsp;(dir(os )+dir(1) &nbsp; );print &nbsp; ('𒁁'=='-'and 241or~-inspect.isfunction (lambda:2 )and 395or-a is-a and+391or-b is-b and+452-2or-p is-p and[9,12,7,4,18,1,-420,17,10,8,22/2,2,5<wbr>,6,m,z,3,13,1][[_^[2,3,z,z,2,z,4,z][_&gt;&gt;<wbr>5&amp;7]][z]%19]+425or 394)	07sys .exit(0);p=2</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#- bqbqbqLzLzLz TcTcTcRqRqRq TzTzTzRtRtRtMbMbMbTqTqTqAbAbAbTmTmTmBqB<wbr>qBqMzMzMzUgUgUg\	07331;"$avdxddxdxz$x${<wbr>print+191}$x";exit #?&gt;\	07'''p'; @'	07[puts 59][exit]'''	07try:a=222;b=9;p=2;m=-424<wbr>;z=2-2;import os,sys,inspect;exec("2?2");print (349)	07except:_=len &nbsp;(dir(os )+dir(1) &nbsp; );print &nbsp; ('𒁁'=='-'and 241or~-inspect.isfunction (lambda:2 )and 395or-a is-a and+391or-b is-b and+452-2or-p is-p and[9,12,7,4,18,1,-420,17,10,8,22/2,2,5<wbr>,6,m,z,3,13,1][[_^[2,3,z,z,2,z,4,z][_&gt;&gt;<wbr>5&amp;7]][z]%19]+425or 394)	07sys .exit(0);p=2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#= $1$10l0c01b1b0l0i 0r 0h0h1d1 1 1_0e 0y0y 0mo1d0y0e0e001d0i0f 0g0n0n1 10mo0n0t_0t0mo0f0t0g0g 0f 0h0r0r0i0001b10c 0c0l1111000001_1 100 |_ Ghost,p\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#= $1$10l0c01b1b0l0i 0r 0h0h1d1 1 1_0e 0y0y 0mo1d0y0e0e001d0i0f 0g0n0n1 10mo0n0t_0t0mo0f0t0g0g 0f 0h0r0r0i0001b10c 0c0l1111000001_1 100 |_ Ghost,p\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[ ' "`e```.1.0.6i]56pq["``\/*]298 .quit._[`\']"\"put 294 bye!\`""360"print bye! #ss['];#/\\/;print 24;exit}}__END__/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[ ' "`e```.1.0.6i]56pq["``\/*]298 .quit._[`\']"\"put 294 bye!\`""360"print bye! #ss['];#/\\/;print 24;exit}}__END__/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">###\ e&gt;+@+-@@@@=&gt;+&lt;@@@=&gt;+&lt;?#&gt;;?\:-._++._++++<wbr>._#/&lt;?\&gt;3-++._6+---2._# Helen,/++++++++++++++++++++++++++++++++<wbr>++++++++++++++++._++._++++++.&gt;!\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">###\ e&gt;+@+-@@@@=&gt;+&lt;@@@=&gt;+&lt;?#&gt;;?\:-._++._++++<wbr>._#/&lt;?\&gt;3-++._6+---2._# Helen,/++++++++++++++++++++++++++++++++<wbr>++++++++++++++++._++._++++++.&gt;!\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[ ']`w`WWW(wWWWWwvwWWwWWWwvwWWW\wWW_WWWWW<wbr>WwWWWW/wW\WWWWWWwWWWWWWWWwwwwvwWW//WwWW<wbr>WWwvwWWwWWWwvwWWwWWWwvwWWwWWW Henry,_ xx xx xx ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi MU )([])({}&lt;(((((()()())){}{})){}{})&gt;)(({}<wbr>)){}{(&lt;(&lt;()&gt;)({})({}&lt;{}&gt;({}){})&gt;){({}[(<wbr>)])}}({}){}({}()&lt;()()()&gt;)(&lt;&gt;&lt;()&gt;){({}[(<wbr>)])}{ &nbsp; #(((() ( )()()())()())(()()())(()()())(()()())((<wbr>)()())(()()())(()()())(()()())(()()())(<wbr>()()()) (()()()))((((((((\'; &nbsp; &nbsp; `"&lt;&lt;rc|\;puts 409 #"`; &nbsp;a=$(printf \\x00);b=$(echo -n $a|wc -c);case $b[1]¢ in 1?)echo 54;;1* )echo 242;;4* )echo 78;;8* )echo $((9999999999999999999&gt;0?166:244));;0?1<wbr>??)echo 50;;0* )x=§;[ ~+ = \~+ ]&amp;&amp;echo $((${#x}&gt;1?282:453))||echo $((346+010));;* )echo 58;;esac;exit; #{IO.puts 295# [']; &nbsp; print (0and eval('$_=:x&amp;&amp;(defined?A)&amp;&amp;290||108+[82,<wbr>2,0,337,-95][:x.methods.size%6]' )or(None and(-1 %2&gt;0and 9or 247)or len(eval ("dir()"))&lt;3and 449or([9,5,8,0,0,0,7,0,0,2,1,-371])[len<wbr>(dir (__builtins__))%13]+439)); &nbsp; &nbsp; &nbsp; &nbsp; '"';"#{p 187if !$_;exit}";'"'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# wWW {}#(prin 45)(bye){{{}#}#}#r"\"print(355);400#{}"<wbr>(prin 199)(bye)) 46(8+9+9+9+9+=!) &gt;* * * * *[[[[3+4*7*@]]]]sxxxxxxxxxxxxxxxxxxxxxx<wbr>xx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[ ']`w`WWW(wWWWWwvwWWwWWWwvwWWW\wWW_WWWWW<wbr>WwWWWW/wW\WWWWWWwWWWWWWWWwwwwvwWW//WwWW<wbr>WWwvwWWwWWWwvwWWwWWWwvwWWwWWW Henry,_ xx xx xx ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho ho hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi hi MU )([])({}&lt;(((((()()())){}{})){}{})&gt;)(({}<wbr>)){}{(&lt;(&lt;()&gt;)({})({}&lt;{}&gt;({}){})&gt;){({}[(<wbr>)])}}({}){}({}()&lt;()()()&gt;)(&lt;&gt;&lt;()&gt;){({}[(<wbr>)])}{ &nbsp; #(((() ( )()()())()())(()()())(()()())(()()())((<wbr>)()())(()()())(()()())(()()())(()()())(<wbr>()()()) (()()()))((((((((\'; &nbsp; &nbsp; `"&lt;&lt;rc|\;puts 409 #"`; &nbsp;a=$(printf \\x00);b=$(echo -n $a|wc -c);case $b[1]¢ in 1?)echo 54;;1* )echo 242;;4* )echo 78;;8* )echo $((9999999999999999999&gt;0?166:244));;0?1<wbr>??)echo 50;;0* )x=§;[ ~+ = \~+ ]&amp;&amp;echo $((${#x}&gt;1?282:453))||echo $((346+010));;* )echo 58;;esac;exit; #{IO.puts 295# [']; &nbsp; print (0and eval('$_=:x&amp;&amp;(defined?A)&amp;&amp;290||108+[82,<wbr>2,0,337,-95][:x.methods.size%6]' )or(None and(-1 %2&gt;0and 9or 247)or len(eval ("dir()"))&lt;3and 449or([9,5,8,0,0,0,7,0,0,2,1,-371])[len<wbr>(dir (__builtins__))%13]+439)); &nbsp; &nbsp; &nbsp; &nbsp; '"';"#{p 187if !$_;exit}";'"'; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# wWW {}#(prin 45)(bye){{{}#}#}#r"\"print(355);400#{}"<wbr>(prin 199)(bye)) 46(8+9+9+9+9+=!) &gt;* * * * *[[[[3+4*7*@]]]]sxxxxxxxxxxxxxxxxxxxxxx<wbr>xx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">###;{e=1}={e:null};console.log e&amp;&amp;39||180# Duncan,\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">###;{e=1}={e:null};console.log e&amp;&amp;39||180# Duncan,\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__=''' &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__=''' &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#' &nbsp;\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#' &nbsp;\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">''+ %&amp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">''+ %&amp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">se pr':;@echo 185 #';se pr'-';pr 89+1/2*518;exi</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">se pr':;@echo 185 #';se pr'-';pr 89+1/2*518;exi</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">ifdef ss </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">ifdef ss </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; &nbsp; ! !</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; &nbsp; ! !</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">2 &nbsp; ! &nbsp; &nbsp;!</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">2 &nbsp; ! &nbsp; &nbsp;!</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">9 &nbsp; &nbsp; &nbsp;!!</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">9 &nbsp; &nbsp; &nbsp;!!</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">2 #xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">2 #xx xx xx xx xx xx xx xx xx xx xx xx xx xx xx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#dddd d b ggggg g iii i llllll l dddd ddddd cc ggggg g ooooooo dddd d ooooooo iii iiiii ooooooo eeeeeeeeee\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#dddd d b ggggg g iii i llllll l dddd ddddd cc ggggg g ooooooo dddd d ooooooo iii iiiii ooooooo eeeeeeeeee\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 353;exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 353;exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 451;exit;' Lucio,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 451;exit;' Lucio,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#PLACET,2&lt;- #2FAC,2SUB#1&lt;- #52FAC,2SUB#2&lt;- #32FACREADOUT,2PLEASEGIVEUPFACs wwwwwwwwwwwWWWwWWWWWwWWWWWWWwWWWWWWWWWw<wbr>WWWWWWWWWWWWWWWwWWWWWWWWWWWWw W</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#PLACET,2&lt;- #2FAC,2SUB#1&lt;- #52FAC,2SUB#2&lt;- #32FACREADOUT,2PLEASEGIVEUPFACs wwwwwwwwwwwWWWwWWWWWwWWWWWWWwWWWWWWWWWw<wbr>WWWWWWWWWWWWWWWwWWWWWWWWWWWWw W</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">jrzaeeaeuee_wuuwq jii_iullluiiiogr se_eeepaeeeeeeeeee;eeecisajjarpppppp ⠆⠄⡒⡆⡘😆😨😒😨💬95💬👥➡😻😹😸🙀🙀😹😼😿�<wbr>�🙀😼😼😸🙀🙀🙀🙀</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">jrzaeeaeuee_wuuwq jii_iullluiiiogr se_eeepaeeeeeeeeee;eeecisajjarpppppp ⠆⠄⡒⡆⡘😆😨😒😨💬95💬👥➡😻😹😸🙀🙀😹😼😿�<wbr>�🙀😼😼😸🙀🙀🙀🙀</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">👋🔢🌚🌝🌝🌚🌚🌚🌚🌚🐸🐸🐸🐸🐸🐸😂😂😂�<wbr>�😂😂😂🌚🔥😂😂😂😂😂😂😂💯💩🐸🔥😂💞💩<wbr>💞😂😂😂😂💞🔥🌚▲▲▲²²²²▲¡▼¡▲▲¡⎚¿⁵228¦ₔ₁<wbr>₉₃2♦10♦10♦10♥☰䷩䷏䷏䷨䷏䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩⚎ֱֶֶֶַַ<wbr>ֲֵֶַָָ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">👋🔢🌚🌝🌝🌚🌚🌚🌚🌚🐸🐸🐸🐸🐸🐸😂😂😂�<wbr>�😂😂😂🌚🔥😂😂😂😂😂😂😂💯💩🐸🔥😂💞💩<wbr>💞😂😂😂😂💞🔥🌚▲▲▲²²²²▲¡▼¡▲▲¡⎚¿⁵228¦ₔ₁<wbr>₉₃2♦10♦10♦10♥☰䷩䷏䷏䷨䷏䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩䷩⚎ֱֶֶֶַַ<wbr>ֲֵֶַָָ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d3" href="#d3">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">밠밠따빠빠맣박다맣받다맣희맣희</span><span style="color: #d4d4d4; background-color: #373d29; ">うんたんたんたんたんうんうんうんうんうんたんうん<wbr>うんうんたんうんたんたんうんたんたんうんたんたんうんたんたんうんたんたんたんた<wbr>んたんうんうんうんうんたんたんうんたんたんたんうんうんうんたんうんうんたんうん<wbr>うんたんうんうんたんうんたんうんうんうんたんたんうんたんたんうんたんたんうんた<wbr>んたんうんたんたんたんうんうん</span><span class="sf3b16">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">밠밠따빠빠맣박다맣받다맣희맣희</span><span class="sf3b18">&nbsp;</span><span style="color: #d4d4d4; background-color: #373d29; ">うんたんたんたんたんうんうんうんうんうんたんうんうんうんたんうんたんたんうんた<wbr>んたんうんたんたんうんたんたんうんたんたんたんたんたんうんうんうんうんたんたん<wbr>うんたんたんたんうんうんうんたんうんうんたんうんうんたんうんうんたんうんたんう<wbr>んうんうんたんたんうんたんたんうんたんたんうんたんたんうんたんたんたんうんうん<wbr></span><span class="sf3b16">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♈💖 # ↨↑1↑↑↑↑↑↑↑↑↨21↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨<wbr>↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨<wbr>↨↑↨↨↑2↨↑1↑↑↑↨↨0↑0↕→ X</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♈💖 # ↨↑1↑↑↑↑↑↑↑↑↨21↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨<wbr>↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨↨↑↨<wbr>↨↑↨↨↑2↨↑1↑↑↑↨↨0↑0↕→ X</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♈ XX &nbsp; X &nbsp; &nbsp; &nbsp; XXX</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♈ XX &nbsp; X &nbsp; &nbsp; &nbsp; XXX</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♉♈ &nbsp;X X &nbsp;XXXXXXXXX X</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♉♈ &nbsp;X X &nbsp;XXXXXXXXX X</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♈ &nbsp;X X &nbsp; XXXXXXX</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♈ &nbsp;X X &nbsp; XXXXXXX</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♉ &nbsp;X</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈♉ &nbsp;X</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈💜 &nbsp;[``]````</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♈💜 &nbsp;[``]````</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♉♈ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊♉♈ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♈ &nbsp;#e:&gt;*****[[[[828+*+@+*99]]]]*****&lt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♈ &nbsp;#e:&gt;*****[[[[828+*+@+*99]]]]*****&lt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😈♈💜 &nbsp;	07 	07 	07 	07 	07 	07#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😈♈💜 &nbsp;	07 	07 	07 	07 	07 	07#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♈ &nbsp;583nnn;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♈ &nbsp;583nnn;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♉💞 &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😇♉💞 &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♉🐸⠀⢃⠛⠋ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">😊📢♉🐸⠀⢃⠛⠋ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#-49,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#-49,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#-5,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#-5,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#6,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#6,A,-1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_+------+ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_+------+ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">e|/0110@| &nbsp;;nnn383\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;e/ff*:*:* :*:::*{,-?\ 683nnn;}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">e|/0110@| &nbsp;;nnn383\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;e/ff*:*:* :*:::*{,-?\ 683nnn;}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">e|/00011|101-2%+?!/ 1a,3*3a,-?/483nnn; :n@04+7*aa/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">e|/00011|101-2%+?!/ 1a,3*3a,-?/483nnn; :n@04+7*aa/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1001 | </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1001 | </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1001 | /183nnn;/283nnn;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1001 | /183nnn;/283nnn;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1000 | /01-2%+?/123nnn;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/1000 | /01-2%+?/123nnn;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/$001 | </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_|/$001 | </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_+------+ </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">_+------+ </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ &nbsp; &nbsp;+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ &nbsp; &nbsp;+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; *xxxxxxx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; *xxxxxxx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">53 x+ &nbsp; &nbsp; &nbsp; x x &nbsp; &nbsp; xxx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">53 x+ &nbsp; &nbsp; &nbsp; x x &nbsp; &nbsp; xxx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp;x* &nbsp;xxxx &nbsp;xx &nbsp; xx x &nbsp;x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp;x* &nbsp;xxxx &nbsp;xx &nbsp; xx x &nbsp;x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x &nbsp;x &nbsp;x &nbsp;x &nbsp;x x &nbsp;x &nbsp;x &nbsp;xx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x &nbsp;x &nbsp;x &nbsp;x &nbsp;x x &nbsp;x &nbsp;x &nbsp;xx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;+xx xxxxxxx +x xxxxxxx &nbsp;xxxx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;+xx xxxxxxx +x xxxxxxx &nbsp;xxxx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x &nbsp;x &nbsp; x &nbsp; &nbsp; &nbsp;7 &nbsp; 83nnn;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x &nbsp;x &nbsp; x &nbsp; &nbsp; &nbsp;7 &nbsp; 83nnn;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">51 &nbsp;+xx &nbsp; &nbsp; &nbsp; &nbsp;xxx</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">51 &nbsp;+xx &nbsp; &nbsp; &nbsp; &nbsp;xxx</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; * &nbsp; &nbsp; x`` &nbsp; x &nbsp;x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; * &nbsp; &nbsp; x`` &nbsp; x &nbsp;x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">49 #+ &nbsp;xx+x=&gt;+ &nbsp;x+x + x B+ ===+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">49 #+ &nbsp;xx+x=&gt;+ &nbsp;x+x + x B+ ===+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;=x x &nbsp;x=== &nbsp;x x &gt;8 xxx +++= +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;=x x &nbsp;x=== &nbsp;x x &gt;8 xxx +++= +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ &nbsp;+x + x,_8=&gt;+ xB &nbsp;x+x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ &nbsp;+x + x,_8=&gt;+ xB &nbsp;x+x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># =+ &nbsp; &nbsp;=x== &nbsp;x +===+&gt; x x &nbsp; &nbsp;+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># =+ &nbsp; &nbsp;=x== &nbsp;x +===+&gt; x x &nbsp; &nbsp;+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;x + &nbsp; &nbsp; +8=Dx B=xD + &nbsp;+ xxx+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;x + &nbsp; &nbsp; +8=Dx B=xD + &nbsp;+ xxx+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ ``=&gt;8=x&gt; &nbsp;x+~ x &nbsp;x +x+B+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+ ``=&gt;8=x&gt; &nbsp;x+~ x &nbsp;x +x+B+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+====+x&gt;~+B+= x x + x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+====+x&gt;~+B+= x x + x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#D~+x 8=++&gt;8x += &nbsp; x+ &nbsp; &nbsp;+,_ &nbsp; +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#D~+x 8=++&gt;8x += &nbsp; x+ &nbsp; &nbsp;+,_ &nbsp; +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">15 + x &nbsp; x &nbsp;+ + &nbsp;xx &nbsp; + &nbsp;? &nbsp; ?@ &nbsp;%"18"_ &nbsp; &nbsp; !</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">15 + x &nbsp; x &nbsp;+ + &nbsp;xx &nbsp; + &nbsp;? &nbsp; ?@ &nbsp;%"18"_ &nbsp; &nbsp; !</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp;+ x &nbsp; + x ++ &nbsp;xx &nbsp; + ?@ &nbsp; &nbsp;? R`"12"`"420"</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp;+ x &nbsp; + x ++ &nbsp;xx &nbsp; + ?@ &nbsp; &nbsp;? R`"12"`"420"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 \+* x &nbsp; &nbsp;+ &nbsp;+ &nbsp;x &nbsp; &nbsp;+ &nbsp; + &nbsp; *</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 \+* x &nbsp; &nbsp;+ &nbsp;+ &nbsp;x &nbsp; &nbsp;+ &nbsp; + &nbsp; *</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; ! x &nbsp;+x &nbsp; + &nbsp; &nbsp; &nbsp; + ? &nbsp;! &nbsp;? R _`*` *</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; ! x &nbsp;+x &nbsp; + &nbsp; &nbsp; &nbsp; + ? &nbsp;! &nbsp;? R _`*` *</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; &nbsp;! x xx --... ...-- &nbsp;? @ ?</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">1 &nbsp; &nbsp;! x xx --... ...-- &nbsp;? @ ?</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x + &nbsp; ++ xx &nbsp;++ ++ &nbsp; &nbsp; +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x + &nbsp; ++ xx &nbsp;++ ++ &nbsp; &nbsp; +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;+xxxxx &nbsp;+ &nbsp; &nbsp; +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;+xxxxx &nbsp;+ &nbsp; &nbsp; +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ * &nbsp; +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ * &nbsp; +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+ *</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;+ *</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">write 224;bye; </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">write 224;bye; </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">rc</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">rc</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x = true 0</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x = true 0</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">$x || { echo 350; exit }</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">$x || { echo 350; exit }</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">a = 403</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">a = 403</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">{|a| echo $a } 406</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">{|a| echo $a } 406</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#=*************************************<wbr>*************+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#=*************************************<wbr>*************+</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; + &nbsp;+$$$</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; + &nbsp;+$$$</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&gt;"3"O._ &nbsp; +// rk:start | print: "69" rk:end &nbsp; &nbsp; &nbsp; + Milan,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&gt;"3"O._ &nbsp; +// rk:start | print: "69" rk:end &nbsp; &nbsp; &nbsp; + Milan,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp;+ ; + * •#407#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp;+ ; + * •#407#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">$'main' *****+ %++ %++ @@* %-- @@* %++ %++ @@* x' '</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">$'main' *****+ %++ %++ @@* %-- @@* %++ %++ @@* x' '</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;-+3o4o# &nbsp;+</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;-+3o4o# &nbsp;+</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d4" href="#d4">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&nbsp; &lt;++"269"&gt;o+</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&nbsp;_&lt;++"269"&gt;o+</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;* *</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;* *</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; +*****</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; +*****</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">^ #= #= +</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">^ #= #= +</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#+= &nbsp; &nbsp;# Paris,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#+= &nbsp; &nbsp;# Paris,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">, &nbsp; #</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">, &nbsp; #</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">,, &nbsp;.=#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">,, &nbsp;.=#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#+ OOO &nbsp; &nbsp; &nbsp; =#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#+ OOO &nbsp; &nbsp; &nbsp; =#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#^=</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;#^=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+`` 231 =#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+`` 231 =#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;#uuu# Pedro,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp;#uuu# Pedro,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">,,..,.,,,,..,.,.,,..,,.,,,...,,.,,..,,,<wbr>,,,..,,,.$</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">,,..,.,,,,..,.,.,,..,,.,,,...,,.,,..,,,<wbr>,,,..,,,.$</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;console.log 178# Pinch,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;console.log 178# Pinch,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">~~~x &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">~~~x &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">main:Int &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">main:Int &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">main =248 </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">main =248 </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">~~~ &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">~~~ &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x Priam,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x Priam,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">literally, print 249</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">literally, print 249</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">(print 164 &nbsp;(exit &nbsp; &nbsp;) )</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">(print 164 &nbsp;(exit &nbsp; &nbsp;) )</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; ( &nbsp;*)</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; ( &nbsp;*)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">begin write &nbsp; &nbsp; &nbsp; &nbsp; ('288' &nbsp; &nbsp;)end.(*)</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">begin write &nbsp; &nbsp; &nbsp; &nbsp; ('288' &nbsp; &nbsp;)end.(*)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">print 61</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">print 61</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">51 outputascii 57 outputascii 48 outputascii quit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">51 outputascii 57 outputascii 48 outputascii quit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt; &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt; &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print(85)</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;print(85)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt;CO COMMENTp]=] </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt;CO COMMENTp]=] </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">execute_process(COMMAND echo 296)#[=[</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">execute_process(COMMAND echo 296)#[=[</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">T:251 &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">T:251 &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">E:0 &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">E:0 &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+IDRIS: main:IO &nbsp; &nbsp; &nbsp;( &nbsp; &nbsp;);main=print 291</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#+IDRIS: main:IO &nbsp; &nbsp; &nbsp;( &nbsp; &nbsp;);main=print 291</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ppW&lt;#require"stdio"Stdio:write &nbsp; &nbsp; (293 &nbsp;)#&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ppW&lt;#require"stdio"Stdio:write &nbsp; &nbsp; (293 &nbsp;)#&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ceppp &nbsp;; &nbsp;; &nbsp; ; ; Regan,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ceppp &nbsp;; &nbsp;; &nbsp; ; ; Regan,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">MsgBox (0,"",169 &nbsp; )</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">MsgBox (0,"",169 &nbsp; )</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#cs &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#cs &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">You can see an x here.&lt;&lt;&lt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">You can see an x here.&lt;&lt;&lt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;{-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;{-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; R2</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; R2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; -1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; -1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 398</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 398</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 397</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 397</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 176</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt; 176</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; Output 3</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;&gt; Output 3</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;SET x TO 120. Robin,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;SET x TO 120. Robin,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;X x. &nbsp;0; Romeo,-}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;X x. &nbsp;0; Romeo,-}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;-- &nbsp;Timon,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;-- &nbsp;Timon,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;l=length$show"\0";main=print$[0,0,0,23<wbr>3,0,146,157]!!l{-</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;l=length$show"\0";main=print$[0,0,0,23<wbr>3,0,146,157]!!l{-</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">\begin{code} &nbsp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">\begin{code} &nbsp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">{- ; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">{- ; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; &nbsp; </span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; &nbsp; &nbsp; </span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">-} </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">-} </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">open import IO;main = run (putStr"159" )</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">open import IO;main = run (putStr"159" )</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">\end{code} </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">\end{code} </span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d5" href="#d5">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">ppppppppppppp;pppp</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">ppppppppppppp;ppppppp</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># {{{ {{{ {{{ {{</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># {{{ {{{ {{{ {{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!ZZt &gt;&gt;END-IF</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!ZZt &gt;&gt;END-IF</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxh &nbsp;program-id.h.procedure</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxh &nbsp;program-id.h.procedure</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxg &nbsp;diVision.display 230. *&gt; Titus,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxg &nbsp;diVision.display 230. *&gt; Titus,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}f &gt;&gt;IF 2&gt;2</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}f &gt;&gt;IF 2&gt;2</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}e</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}e</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxd</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xxxd</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xx}c</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#xx}c</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}b</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}}b</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#x}xa</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#x}xa</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&amp;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&amp;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7&amp;::=~147</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7&amp;::=~147</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!::~322</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!::~322</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">::=</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">::=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif*/*/*/*/"n=410+1;print(n )""";say 338/*</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif*/*/*/*/"n=410+1;print(n )""";say 338/*</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""/*</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""/*</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">333</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">333</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">quit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">quit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:e</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:e</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if -%~0==- echo 341&amp;exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if -%~0==- echo 341&amp;exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set/ax=2222222222</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set/ax=2222222222</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if -%x%==- echo 330&amp;exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if -%x%==- echo 330&amp;exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if %x% gtr 0 echo 337&amp;exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;if %x% gtr 0 echo 337&amp;exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 336</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">echo 336</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">exit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">exit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!rubyperl</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#!rubyperl</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">; print 0&amp;&amp;339||340</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">; print 0&amp;&amp;339||340</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">__END__</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}} }put$343 {{{ Fenton,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}}} }put$343 {{{ Fenton,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#]#47|&gt;print"""]#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#]#47|&gt;print"""]#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">let d="""#\""";echo if compiles uint64.low:21 else:424#" """;log 380</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">let d="""#\""";echo if compiles uint64.low:21 else:424#" """;log 380</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#[#[</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#[#[</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[][=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[<wbr>=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=<wbr>[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[<wbr>=][</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[][=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[<wbr>=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=<wbr>[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[=[<wbr>=][</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[[[=</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[[[=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x] </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[[[=</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[[[=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">][[=</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">][[=</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]]]]]]]]</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">]]]]]]]]</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">MoOMoOMoOMoOMOOmoOMoOMoOMoOMoOMoOMoOMoO<wbr>MoOMoOMoOMoOMoOMoOmOoMOomoomoOOOM </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">MoOMoOMoOMoOMOOmoOMoOMoOMoOMoOMoOMoOMoO<wbr>MoOMoOMoOMoOMoOMoOmOoMOomoomoOOOM </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; ; &nbsp;; &nbsp;; &nbsp;; ;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; ; &nbsp;; &nbsp; &nbsp; &nbsp;;;;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp; ; &nbsp;; &nbsp;; &nbsp;; ;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; &nbsp;; ; &nbsp;; &nbsp; &nbsp; &nbsp;;;;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">text 0 0 405</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">text 0 0 405</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">혀어엉.....혀어어엉....형.....흑...하아앗...흐읏...흑.<wbr>흣 Dionyza,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">혀어엉.....혀어어엉....형.....흑...하아앗...흐읏...흑.<wbr>흣 Dionyza,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">⌁⟬⫸⁜⫷⌁⌁⌁⌁⌁⟭⫸⁜⁕⌁⌁⌁⁕⁜⁜⁜⁜⁜⁜⁕ 吾有一數曰「281」書之 「（》十《一一一一一）》十。一一一。十十十十十十十。」</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">⌁⟬⫸⁜⫷⌁⌁⌁⌁⌁⟭⫸⁜⁕⌁⌁⌁⁕⁜⁜⁜⁜⁜⁜⁕ 吾有一數曰「281」書之 「（》十《一一一一一）》十。一一一。十十十十十十十。」</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d6" href="#d6">.</a></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">+ f</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">1 0 obj&lt;&lt;/R 0/Type/Catalog/Pages 2 0 R&gt;&gt;endobj r</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">2 0 obj&lt;&lt;/Kids[3 0 R]/Count 1&gt;&gt;endobj r</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">3 0 obj&lt;&lt;/Resources&lt;&lt;/Font&lt;&lt;/F&lt;&lt;/Subtype/Ty<wbr>pe1/BaseFont/Arial&gt;&gt;&gt;&gt;&gt;&gt;/Type/Page/Cont<wbr>ents 4 0 R/Parent 2 0 R&gt;&gt;endobj r</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">4 0 obj&lt;&lt;&gt;&gt;stream</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">BT/F 24 Tf 0 770 Td&lt;343539&gt;' ET%'</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">endstream</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">endobj</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">trailer&lt;&lt;/Root 1 0 R&gt;&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">trailer&lt;&lt;/Root 1 0 R&gt;&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d7" href="#d7">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">1 0 obj&lt;&lt;/R 0/Type/Catalog/Pages 2 0 R&gt;&gt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">2 0 obj&lt;&lt;/Kids[3 0 R]/Count 1&gt;&gt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">3 0 obj&lt;&lt;/R 0/Type/Page/Contents 4 0 R&gt;&gt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4 0 obj&lt;&lt;&gt;&gt;stream BT/F 24 Tf 0 770 Td&lt;343534&gt;" -50 Td&lt;343538&gt;' '</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4 0 obj&lt;&lt;&gt;&gt;stream BT/F 24 Tf 0 770 Td&lt;343534&gt;" -50 Td&lt;343538&gt;' '</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">/F 24 Tf 0 770 Td&lt;343535&gt;" 50 Td&lt;&gt;0&lt;343536&gt;" "&lt;&gt;50 Td&lt;343537&gt;' '</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">/F 24 Tf 0 770 Td&lt;343535&gt;" 50 Td&lt;&gt;0&lt;343536&gt;" "&lt;&gt;50 Td&lt;343537&gt;' '</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">endstream endobjr</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">endstream endobjr</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d8" href="#d8">.</a></td><td style="color: #d4d4d4; background-color: #040a11; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #0a172c; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#//--&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#//--&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d9" href="#d9">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;attache&gt;Print[194]Exit[</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;]&lt;/attache&gt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;attache&gt;Print[194]Exit[</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;]&lt;/attache&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d10" href="#d10">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;script</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;type="text/tiscript"&gt;self.html="&lt;p&gt;302"<wbr>&lt;/script&gt; Venus,</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;script</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;type="text/tiscript"&gt;self.html="&lt;p&gt;302"<wbr>&lt;/script&gt; Venus,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;script&gt;d=document;d.innerHTML="&lt;p&gt;344"<wbr>;onload=function &nbsp;</span><span style="color: #d4d4d4; background-color: #373d29; ">(){g=window;e=g.external;d.body.style.c<wbr>olor='000'// Viola,</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;script&gt;d=document;d.innerHTML="&lt;p&gt;344<wbr>";onload=function </span><span style="color: #d4d4d4; background-color: #373d29; ">(){g=window;e=g.external;d.body.style.c<wbr>olor='000'// Viola,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">// Adonis,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">// Adonis,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">n=e===null?334:[ ].pop?257- -[10,,,0,,,18,d.dir?159:2,!e?77:d.clear<wbr>?5:58,d.compatible?50:g.XMLHttpRequest?<wbr>49:d.nodeType?8:55][[""+[].pop][0].leng<wbr>th-!!d.head-!d.fonts-28]:d.dir==''?312-<wbr>1:308</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">n=e===null?334:[ ].pop?257- -[10,,,0,,,18,d.dir?159:2,!e?77:d.clear<wbr>?5:58,d.compatible?50:g.XMLHttpRequest?<wbr>49:d.nodeType?8:55][[""+[].pop][0].leng<wbr>th-!!d.head-!d.fonts-28]:d.dir==''?312-<wbr>1:308</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">d.body.innerHTML=n;n-416?0:t.innerHTML=<wbr>" Elinor,"</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">d.body.innerHTML=n;n-416?0:t.innerHTML=<wbr>" Elinor,"</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d11" href="#d11">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">; </span><span class="sf3b16">}</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">; </span><span class="sf3b16">}&lt;/script&gt;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;/script&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d12" href="#d12">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;h1&gt;404&lt;/h1&gt;</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;#//&lt;!--&gt; -&gt; Aegeon,</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;h1&gt;404&lt;/h1&gt;</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;#//&lt;!--&gt; -&gt; Aegeon,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;p&gt;301&lt;/p&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;p&gt;301&lt;/p&gt;&lt;a&gt;304&lt;/a&gt;&lt;b&gt;305&lt;/b&gt;&lt;i&gt;309&lt;/<wbr>i&gt;&lt;u&gt;310&lt;/u&gt;&lt;c&gt;419&lt;/c&gt;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;a&gt;304&lt;/a&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;b&gt;305&lt;/b&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;i&gt;309&lt;/i&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;u&gt;310&lt;/u&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b18">&lt;c&gt;419&lt;/c&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #4b1818; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d13" href="#d13">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;style</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;id=t&gt;</span></code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;style</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;id=t&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">head+body,text,h1{display:none}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">head+body,text,h1{display:none}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:,a,i{color:fff}*{+color:fff} #@[[[["272"?]]]]******&lt;{}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:,a,i{color:fff}*{+color:fff} #@[[[["272"?]]]]******&lt;{}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">a{-color:000}-a,b{color:000;-color:fff}<wbr></span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">a{-color:000}-a,b{color:000;-color:fff}<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">: u,-i{color:000}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">: u,-i{color:000}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:after{content:"258";[;content:"276";]}<wbr></span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:after{content:"258";[;content:"276";]}<wbr></span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media all\0{</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media all\0{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:after{content:"260";color:#fff\ </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:after{content:"260";color:#fff\ </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">}:root:before{content:"316";color:fff}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">}:root:before{content:"316";color:fff}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:before{content:"314"}}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:before{content:"314"}}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media \0 all{:after{content:"266"}}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media \0 all{:after{content:"266"}}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media x{</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">@media x{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">head+body{display:block;color:white}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">head+body{display:block;color:white}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:before{content:"345"}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">:before{content:"345"}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">c{color:red}:after,:,c{color:white}}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">c{color:red}:after,:,c{color:white}}</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d14" href="#d14">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">&lt;/style&gt;</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span class="sf3b16">_&lt;/style&gt;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#^^</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#^^</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#*RV3&gt;&gt;[0]{4724545236657214694658301060<wbr>52219449897} ()//~#class C{function:Main (a:String[] )~Nil{83-&gt;Print();}} #~</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#*RV3&gt;&gt;[0]{4724545236657214694658301060<wbr>52219449897} ()//~#class C{function:Main (a:String[] )~Nil{83-&gt;Print();}} #~</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#%RV2&gt;&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;()</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#%RV2&gt;&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;()</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#V2-&gt;=359</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#V2-&gt;=359</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#V3-&gt;=323</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#V3-&gt;=323</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">22-23-31-13-13-31-13-13-31-13-13-31-13-<wbr>13-31-12-12-23-31-13-13-31-13-13-31-13-<wbr>13-31-13-13-31-21-22-21-12-32</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">22-23-31-13-13-31-13-13-31-13-13-31-13-<wbr>13-31-12-12-23-31-13-13-31-13-13-31-13-<wbr>13-31-13-13-31-21-22-21-12-32</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Tooting Bec</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Tooting Bec</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Charing Cross</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Charing Cross</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Charing Cross</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Charing Cross</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Bank</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Bank</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Hammersmith</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Hammersmith</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Upminster</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Upminster</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Hammersmith</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Hammersmith</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Upminster</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Upminster</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Embankment</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take District Line to Embankment</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Bakerloo Line to Embankment</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Bakerloo Line to Embankment</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 UP</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 UP</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 RIGHT</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 RIGHT</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 RIGHT</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 RIGHT</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Mornington Crescent</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Take Northern Line to Mornington Crescent</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 TEACH</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 TEACH</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 BOND</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 RIGHT</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 RIGHT</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 LEFT</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 LEFT</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 RIGHT</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 RIGHT</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 BOND</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 BOND</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 TEACH</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">7 TEACH</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 TEACH</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 TEACH</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 TEACH</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">5 TEACH</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">6 YELL</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OURfuorfuor</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OURfuorfuor</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4fuor</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4fuor</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4four</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4four</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444fuor</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444fuor</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4four</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">FOU4four</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OUR</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OUR</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OUR</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4OUR</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">4444</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;; ;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;; ;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set ! 57</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set ! 57</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set ! 51</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">set ! 51</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;49 &amp;1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;49 &amp;1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;56 &amp;1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;56 &amp;1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;50 &amp;1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">out &amp;50 &amp;1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">When this program starts:</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">When this program starts:</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">There is a scribe called x</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">There is a scribe called x</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x is to write 179</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x is to write 179</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p now 70 dollar off!</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p now 70 dollar off!</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p has been selling out worldwide!</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p has been selling out worldwide!</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">More 91 of this</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">More 91 of this</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">How much is it</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">How much is it</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">red down one blue up red down one blue up red up one red right two blue up</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">red down one blue up red down one blue up red up one red right two blue up</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">baa baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<wbr>aaaaaaaaaaaa bleeeeeeeeeeeeet bleeeeeeeeeeeeet bleeeeeeeeeet baaaa bleet bleeeeeeeeeet bleeet bleeeeeeeeeet</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">baa baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<wbr>aaaaaaaaaaaa bleeeeeeeeeeeeet bleeeeeeeeeeeeet bleeeeeeeeeet baaaa bleet bleeeeeeeeeet bleeet bleeeeeeeeeet</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d15" href="#d15">.</a></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">AOCOMM""C""Ha7^ Exith"t5"giogrlstd[2"4"]!?48 \0C0+---i 2y3a;re 16o@1*_eg=56&lt;p&gt;3=0+@#88;""pan,Pri,:9 &nbsp; r=ni^ c;n: &nbsp;7* &nbsp;</span><span class="sf3b16">\e|l4=1/0</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;::Srib449He mam </span><span class="sf3b16">heads/CyaTypes</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #d4d4d4; background-color: #373d29; "><code><span style="color: #d4d4d4; background-color: #373d29; ">AOCOMM""C""Ha7^ Exith"t5"giogrlstd[2"4"]!?48 \0C0+---i 2y3a;re 16o@1*_eg=56&lt;p&gt;3=0+@#88;""pan,Pri,:9 &nbsp; r=ni^ c;n: &nbsp;7* &nbsp;</span><span class="sf3b16">\e|l4=10</span><span style="color: #d4d4d4; background-color: #373d29; ">&nbsp;::Srib449He mam </span><span class="sf3b16">headsuyaT.exIFc</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;; ;:在ｕ∸⫗</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;; ;:在ｕ∸⫗</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f Dorcas,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">+ f Dorcas,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">.int 2298589328,898451655,12,178790,10181685<wbr>91,84934449,12597</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">.int 2298589328,898451655,12,178790,10181685<wbr>91,84934449,12597</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif//* Alonso,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif//* Alonso,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""//*:</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""//*:</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#include&lt;stdio.h&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#include&lt;stdio.h&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#define z(a) #a</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#define z(a) #a</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#define u "e"//" Angelo,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#define u "e"//" Angelo,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">const char*i="25 10 37 1""a c #FFC0FF""B c #0000C0""d c #58007B""e c #0C8302""o c #FF8000""t c #FF00BC""u c #008080""h c #E60001""i c #CAFFFF""f c #280000""k c #CA0000""l c #CA007F""n c #330001""q c #E60000""A c #0040C0""E c #808000""F c #00C040""G c #008000""R c #800000""H c #0000AA""I c #00AA00""C c #55FFFF""K c #AAAAAA""r c red""g c green""b c blue""c c cyan""m c magenta""y c #FFFF00""x c black""_ c #FFFFFF""V c #000502"": c #010001""@ c #090909""2 c #000002""3 c #000003""4 c #000004""HHHVahtdegggggggyrggggggc""IHH<wbr>3aixuEFbGGbggbryAEGRgc""CCH:afyurbgbggg<wbr>ggggb____o""ICH2akmyyyyyyyyyyyyyyyyye""<wbr>I__:almyyyyyyyyyyyyyyyyye""K__4anmyyyyy<wbr>yyyyyyyyy_y_e""HH_:aqggyyyyyyyyg____m_C<wbr>e""CH_@axxxxxxxxxxxxxxxxxxxx""K___aaaam<wbr>___bbbbbBm_bbBab""K___________bbbbb___b<wbr>bxbb";//"</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">const char*i="25 10 37 1""a c #FFC0FF""B c #0000C0""d c #58007B""e c #0C8302""o c #FF8000""t c #FF00BC""u c #008080""h c #E60001""i c #CAFFFF""f c #280000""k c #CA0000""l c #CA007F""n c #330001""q c #E60000""A c #0040C0""E c #808000""F c #00C040""G c #008000""R c #800000""H c #0000AA""I c #00AA00""C c #55FFFF""K c #AAAAAA""r c red""g c green""b c blue""c c cyan""m c magenta""y c #FFFF00""x c black""_ c #FFFFFF""V c #000502"": c #010001""@ c #090909""2 c #000002""3 c #000003""4 c #000004""HHHVahtdegggggggyrggggggc""IHH<wbr>3aixuEFbGGbggbryAEGRgc""CCH:afyurbgbggg<wbr>ggggb____o""ICH2akmyyyyyyyyyyyyyyyyye""<wbr>I__:almyyyyyyyyyyyyyyyyye""K__4anmyyyyy<wbr>yyyyyyyyy_y_e""HH_:aqggyyyyyyyyg____m_C<wbr>e""CH_@axxxxxxxxxxxxxxxxxxxx""K___aaaam<wbr>___bbbbbBm_bbBab""K___________bbbbb___b<wbr>bxbb";//"</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">//\(</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">//\(</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">typedef int known,macro;int x= 0, &nbsp; &nbsp;y[60];macro m(){0;}int f(int a,...){y[x=0]=x=72;printf("\x25i",!m?19<wbr>5:!a?124+x:sizeof' '-1? (1&amp;*z (N)?234:!"\??-"[1]?67^*u"":*u""?218:402<wbr> ):*u""?37:z (0'0 &nbsp;0'0 )[7]?75:"\??-"[1]?77+a/2:77);}__attribu<wbr>te__ ((weak))int main (){known y;int i;f(x,x=sizeof y);x=1;return 0;}__attribute__((destructor &nbsp;))int g(){x?0:puts("198");}//()) #}}};print{408}{{s{{\}*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">typedef int known,macro;int x= 0, &nbsp; &nbsp;y[60];macro m(){0;}int f(int a,...){y[x=0]=x=72;printf("\x25i",!m?19<wbr>5:!a?124+x:sizeof' '-1? (1&amp;*z (N)?234:!"\??-"[1]?67^*u"":*u""?218:402<wbr> ):*u""?37:z (0'0 &nbsp;0'0 )[7]?75:"\??-"[1]?77+a/2:77);}__attribu<wbr>te__ ((weak))int main (){known y;int i;f(x,x=sizeof y);x=1;return 0;}__attribute__((destructor &nbsp;))int g(){x?0:puts("198");}//()) #}}};print{408}{{s{{\}*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""/*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1""/*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;WQTkTTX Antony,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;WQTkTTX Antony,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;import Prelude;import GHC.IO;import Data.Functor.Const;import Data.String;import Text.Heredoc;import Control.Exception;import Language.Haskell.TH;import Text.Show.Functions;instance Monoid a=&gt;Monad (Const a)where _&gt;&gt;=_=mempty</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;import Prelude;import GHC.IO;import Data.Functor.Const;import Data.String;import Text.Heredoc;import Control.Exception;import Language.Haskell.TH;import Text.Show.Functions;instance Monoid a=&gt;Monad (Const a)where _&gt;&gt;=_=mempty</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;instance K Float;instance IsString Integer where{fromString _=0};b=x#x-- Arthur,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;instance K Float;instance IsString Integer where{fromString _=0};b=x#x-- Arthur,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;i_= -1`mod`2+c;data B=B Int;_=B b;e=error"#//";f?n=unsafePerformIO$ catch (f e)$ \ErrorCall{}-&gt;r n;instance Num(a-&gt;b);instance Num( &nbsp;);instance Show(Q a)where{show _=""};f= (^ );q _=r$ (d.B)?4;d (B _)=r$0`f`f 2 64;class(Show a,Floating a)=&gt;K a where{k ::a-&gt;String;k _=show$ (id ::a-&gt;a)pi};c=l (- x)`mod`4;g=[here|here&lt;-""]--[|]</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;i_= -1`mod`2+c;data B=B Int;_=B b;e=error"#//";f?n=unsafePerformIO$ catch (f e)$ \ErrorCall{}-&gt;r n;instance Num(a-&gt;b);instance Num( &nbsp;);instance Show(Q a)where{show _=""};f= (^ );q _=r$ (d.B)?4;d (B _)=r$0`f`f 2 64;class(Show a,Floating a)=&gt;K a where{k ::a-&gt;String;k _=show$ (id ::a-&gt;a)pi};c=l (- x)`mod`4;g=[here|here&lt;-""]--[|]</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;--W Banquo,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;--W Banquo,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;x=0;y#a=subtract 0b1206;x#a=174;h a=a^x;r=pure;l a=length$ show a;forall=0;z|(∀)&lt;-5=forall;b1206|let _._=x;negate _=3=206+[40,58,0,57,55,26,16,3,4,-78,0,<wbr>1,8,5,6,12-1]!!(l(" &nbsp;",0x0.1,1e1,(0`id`),k(0 ::Float),toEnum 0 ::Num a=&gt;Enum a=&gt;a)+2*l (do a&lt;-Const[1];pure a,h pi,h(0 ::Real a=&gt;a))- 3*(l$(pure$TupE[]::ExpQ))-(-q?6+70+z));<wbr>(!)=seq</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;x=0;y#a=subtract 0b1206;x#a=174;h a=a^x;r=pure;l a=length$ show a;forall=0;z|(∀)&lt;-5=forall;b1206|let _._=x;negate _=3=206+[40,58,0,57,55,26,16,3,4,-78,0,<wbr>1,8,5,6,12-1]!!(l(" &nbsp;",0x0.1,1e1,(0`id`),k(0 ::Float),toEnum 0 ::Num a=&gt;Enum a=&gt;a)+2*l (do a&lt;-Const[1];pure a,h pi,h(0 ::Real a=&gt;a))- 3*(l$(pure$TupE[]::ExpQ))-(-q?6+70+z));<wbr>(!)=seq</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;-- Bianca,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;-- Bianca,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;main|let p!_=0=print$ sum[last$ 172:[[b,0,170,303]!!i_|g&lt;"&gt;"],0!61]--} </span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&gt;main|let p!_=0=print$ sum[last$ 172:[[b,0,170,303]!!i_|g&lt;"&gt;"],0!61]--} </span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1 ""/*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1 ""/*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif//*</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif//*</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">/*/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">/*/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if!1</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p_;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p_;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">select 192;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">select 192;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">.exit# Brutus,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">.exit# Brutus,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">382-9/5*50</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">382-9/5*50</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">quit</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">quit</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p=sizeof(" &nbsp; (\");print'(''72'' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)';end !" &nbsp; &nbsp;);main &nbsp; (){puts('??- '&amp;256?"101":"92" );return 0;}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">p=sizeof(" &nbsp; (\");print'(''72'' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)';end !" &nbsp; &nbsp;);main &nbsp; (){puts('??- '&amp;256?"101":"92" );return 0;}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if 0</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#if 0</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif/* Caesar,</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endif/* Caesar,</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#}</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">disp 49</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">disp 49</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#{</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#{</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">}{}&lt;&gt;</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">}{}&lt;&gt;</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">x.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Emilia, nice chick.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Emilia, nice chick.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Ford, big fat cat.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Ford, big fat cat.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Act I:.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Act I:.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Scene I:.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Scene I:.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[Enter Emilia and Ford]</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">[Enter Emilia and Ford]</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Emilia:</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">Emilia:</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">openthyheart.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">openthyheart.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">you cat.openthyheart.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">you cat.openthyheart.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">you sum you fat cat.openthyheart.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">you sum you fat cat.openthyheart.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;	07</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;	07</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">S\\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">S\\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;2^2^2^7^MAOAOAOF@#@@@@ @	07</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;2^2^2^7^MAOAOAOF@#@@@@ @	07</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;9^7^8^MUOUOF &nbsp; @ ## # #######################################<wbr>##########@</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;9^7^8^MUOUOF &nbsp; @ ## # #######################################<wbr>##########@</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;/._++.x._;#; ; ; @ &nbsp; @@ Ford: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;/._++.x._;#; ; ; @ &nbsp; @@ Ford: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp; /!x._+ +.-.&gt;_# &nbsp; @###@</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># &nbsp; /!x._+ +.-.&gt;_# &nbsp; @###@</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;\? &nbsp; &nbsp; -/! &nbsp;+++++++++++++++++++++++++++++++++++++++<wbr>++++++++++&lt;&gt;^+++++&lt;\&gt;+++.-.</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">&nbsp;\? &nbsp; &nbsp; -/! &nbsp;+++++++++++++++++++++++++++++++++++++++<wbr>++++++++++&lt;&gt;^+++++&lt;\&gt;+++.-.</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">rebol[ ]prin either Value? 'disarm[223][270];red[0]prin 221; &nbsp;-_#.---.&gt;/</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">rebol[ ]prin either Value? 'disarm[223][270];red[0]prin 221; &nbsp;-_#.---.&gt;/</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#x{ &nbsp;/&lt;+&gt;/ &nbsp; K yya+- Ford: &nbsp;&amp; &gt;g+$02y#v_"693",,,@_&gt;10k !'&amp;* 001- #vk!&gt;2*+'P:3+'D'34#v(\$&gt;+1y'/ *+2yf8+*+01-2/'2*+2e*%3*'U+:8g,:1+8g,:2<wbr>+8g:' -!#@_,@)9s</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#x{ &nbsp;/&lt;+&gt;/ &nbsp; K yya+- Ford: &nbsp;&amp; &gt;g+$02y#v_"693",,,@_&gt;10k !'&amp;* 001- #vk!&gt;2*+'P:3+'D'34#v(\$&gt;+1y'/ *+2yf8+*+01-2/'2*+2e*%3*'U+:8g,:1+8g,:2<wbr>+8g:' -!#@_,@)9s</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">endif # &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; !9A=AgRA; &nbsp; &nbsp; &nbsp; AC&gt;82y/ &nbsp; &nbsp; &nbsp;#^_"873",,,@_\$+&lt;&gt;2+^@ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &gt;0 &nbsp;^</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">endif # &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; !9A=AgRA; &nbsp; &nbsp; &nbsp; AC&gt;82y/ &nbsp; &nbsp; &nbsp;#^_"873",,,@_\$+&lt;&gt;2+^@ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &gt;0 &nbsp;^</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;@ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;@\</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># { &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;@ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;@\</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">''';'#{' #'}'}[']</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">''';'#{' #'}'}[']</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># [[ &nbsp; &nbsp; &nbsp; &nbsp;]=] # &nbsp; &nbsp; &nbsp; &nbsp;````(print 346 )# )print 379#s()</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># [[ &nbsp; &nbsp; &nbsp; &nbsp;]=] # &nbsp; &nbsp; &nbsp; &nbsp;````(print 346 )# )print 379#s()</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt;	07'@#'</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#&lt;&lt;&lt;##&gt;	07'@#'</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ce ss~## Ford:</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#ce ss~## Ford:</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endcomment K`250</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#endcomment K`250</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#nocomment outtext("155" )</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#nocomment outtext("155" )</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#/`psZ283MIOnDrFe</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#/`psZ283MIOnDrFe</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#\!|!o51 &nbsp; ;" Ford:" ~nJQ &nbsp;p'34' \=#x=4;print(1&gt;&gt;-1&lt;2 ? 17 : Inf16-0|&gt;sizeof&gt;2 ? 162 : √4x&lt;8 ? 201 : 225+2&gt;&gt;1*2 )#p⟫try {EVAL 'say ｢27｣;exit'};say 237#⟫say 167#{{p{{}}}}say 235#]# &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#]##&gt;/1a97*.;: /889*._/#print(171 )#s-#print (365-((1/2)*380))#s-#-#io.print 452#s|# &nbsp;print(208)#sCOMMENTprint("65" )#ERi521@&lt;? ? ?342;![["172"?]]]]* * * * * *&lt;es9#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#\!|!o51 &nbsp; ;" Ford:" ~nJQ &nbsp;p'34' \=#x=4;print(1&gt;&gt;-1&lt;2 ? 17 : Inf16-0|&gt;sizeof&gt;2 ? 162 : √4x&lt;8 ? 201 : 225+2&gt;&gt;1*2 )#p⟫try {EVAL 'say ｢27｣;exit'};say 237#⟫say 167#{{p{{}}}}say 235#]# &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#]##&gt;/1a97*.;: /889*._/#print(171 )#s-#print (365-((1/2)*380))#s-#-#io.print 452#s|# &nbsp;print(208)#sCOMMENTprint("65" )#ERi521@&lt;? ? ?342;![["172"?]]]]* * * * * *&lt;es9#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#8M`| &nbsp;&lt;esc&gt;dggi2&lt;esc&gt;// Ford: ~- &lt;~-&lt; ~-&lt;&lt;&lt;~-! `=&gt; #</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#8M`| &nbsp;&lt;esc&gt;dggi2&lt;esc&gt;// Ford: ~- &lt;~-&lt; ~-&lt;&lt;&lt;~-! `=&gt; #</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1// &nbsp;&gt;&gt;END-IF*&gt;&gt;&gt;9#</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2">#1// &nbsp;&gt;&gt;END-IF*&gt;&gt;&gt;9#</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># '&gt;+/*' 25 &nbsp;&gt;[};}]+pppppeeeee^*n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \! 99 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\*n*n*e*s*s*s*ee*n*n*n*e*sss*e*n*n*n*ee<wbr>*js"(*)//dd" &nbsp; &nbsp;&lt;&lt; &nbsp;--&gt;# # &nbsp; &nbsp;_e 5&gt;1 &nbsp;*/// **/*/*/*/*/*/*/--\)∙226ｐ|_|_X222999612#<wbr></span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf3b2"># '&gt;+/*' 25 &nbsp;&gt;[};}]+pppppeeeee^*n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; \! 99 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;\*n*n*e*s*s*s*ee*n*n*n*e*sss*e*n*n*n*ee<wbr>*js"(*)//dd" &nbsp; &nbsp;&lt;&lt; &nbsp;--&gt;# # &nbsp; &nbsp;_e 5&gt;1 &nbsp;*/// **/*/*/*/*/*/*/--\)∙226ｐ|_|_X222999612#<wbr></span></code></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
